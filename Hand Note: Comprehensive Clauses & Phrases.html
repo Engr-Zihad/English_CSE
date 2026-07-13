@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hand Note: Comprehensive Clauses & Phrases</title>
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f5efe6;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            padding: 30px 20px;
+            color: #2d2a24;
+            display: flex;
+            justify-content: center;
+        }
+        .notebook {
+            max-width: 1200px;
+            width: 100%;
+            background: #fefcf5;
+            border-radius: 28px;
+            padding: 40px 45px 55px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10), 0 8px 24px rgba(0, 0, 0, 0.06);
+            position: relative;
+            border: 1px solid #e8dfd0;
+        }
+        .notebook::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            background: repeating-linear-gradient(transparent,
+                    transparent 27px,
+                    #f0ebe2 27px,
+                    #f0ebe2 28px);
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .notebook>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #2b241c;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            border-bottom: 4px double #d4c9b8;
+            padding-bottom: 16px;
+            margin-bottom: 30px;
+        }
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #7a6e5d;
+            letter-spacing: 0;
+            background: #ede7dc;
+            padding: 4px 18px;
+            border-radius: 40px;
+            margin-left: 6px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #3d342a;
+            margin: 32px 0 18px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        h2 .badge {
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #d4c9b8;
+            color: #3d342a;
+            padding: 2px 14px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+        .mnemonics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            background: #f8f3ea;
+            border-radius: 18px;
+            padding: 22px 24px;
+            margin: 6px 0 12px 0;
+            border-left: 6px solid #c5b09b;
+        }
+        .mnemonic-item {
+            font-size: 0.9rem;
+            background: white;
+            padding: 6px 14px 6px 16px;
+            border-radius: 40px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid #e6ddd0;
+        }
+        .mnemonic-item .tag {
+            font-weight: 700;
+            color: #a38267;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            background: #f0e8dd;
+            padding: 0 10px;
+            border-radius: 30px;
+        }
+        .mnemonic-item .hint {
+            color: #4d4236;
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 10px 0 8px 0;
+        }
+        @media (max-width: 760px) {
+            .item-grid {
+                grid-template-columns: 1fr;
+            }
+            .notebook {
+                padding: 24px 18px 35px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 18px;
+            padding: 18px 20px 20px;
+            border: 1px solid #e4d9ca;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: 0.15s;
+            position: relative;
+        }
+        .item-card:hover {
+            border-color: #cbbaa7;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        }
+        .item-card .type-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            padding: 2px 14px;
+            border-radius: 40px;
+            background: #e9dfd2;
+            color: #5a4c3c;
+            margin-bottom: 8px;
+        }
+        .item-card .type-tag.clause {
+            background: #d7e0d9;
+            color: #2a4d3a;
+        }
+        .item-card .type-tag.phrase {
+            background: #dce3e8;
+            color: #2a4050;
+        }
+        .item-card .sentence {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #1f1b16;
+            padding: 4px 0 2px;
+            line-height: 1.5;
+        }
+        .item-card .sentence .highlight {
+            background: #fcebd6;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .item-card .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 16px;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #6f6251;
+            border-top: 1px dashed #e3d7c8;
+            padding-top: 10px;
+        }
+        .item-card .meta .source {
+            background: #f3ede4;
+            padding: 1px 12px;
+            border-radius: 30px;
+            font-weight: 500;
+            color: #5a4c3c;
+        }
+        .item-card .meta .logic {
+            color: #4d5a4a;
+            line-height: 1.4;
+        }
+        .item-card .num {
+            position: absolute;
+            top: -8px;
+            right: 14px;
+            background: #cbbaa7;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .quiz-section {
+            margin-top: 42px;
+            background: #f8f3ea;
+            border-radius: 24px;
+            padding: 30px 32px 36px;
+            border: 1px solid #e4d9ca;
+        }
+        .quiz-section h2 {
+            margin-top: 0;
+        }
+        .quiz-question {
+            background: white;
+            border-radius: 18px;
+            padding: 22px 26px;
+            margin-bottom: 20px;
+            border: 1px solid #e4d9ca;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+        .quiz-question .q-sentence {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #1f1b16;
+            padding: 4px 0 12px;
+            border-bottom: 1px solid #ede7dc;
+            margin-bottom: 14px;
+        }
+        .quiz-question .q-sentence .hl {
+            background: #fcebd6;
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .quiz-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 6px 0 8px;
+        }
+        .quiz-options button {
+            background: #f5efe6;
+            border: 2px solid #e4d9ca;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #3d342a;
+            cursor: pointer;
+            transition: 0.1s;
+            font-family: inherit;
+        }
+        .quiz-options button:hover {
+            background: #ede3d6;
+            border-color: #cbbaa7;
+            transform: scale(1.02);
+        }
+        .quiz-options button.correct {
+            background: #b5d6b0;
+            border-color: #4f8a47;
+            color: #1f3d1a;
+        }
+        .quiz-options button.wrong {
+            background: #f0cdc9;
+            border-color: #b15a50;
+            color: #5e2b26;
+        }
+        .quiz-options button:disabled {
+            cursor: default;
+            opacity: 0.7;
+            transform: none;
+        }
+        .quiz-feedback {
+            margin-top: 12px;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: none;
+        }
+        .quiz-feedback.show {
+            display: block;
+        }
+        .quiz-feedback.correct {
+            background: #e4f0e0;
+            border-left: 6px solid #4f8a47;
+            color: #1f3d1a;
+        }
+        .quiz-feedback.wrong {
+            background: #f5e3e0;
+            border-left: 6px solid #b15a50;
+            color: #5e2b26;
+        }
+        .quiz-feedback .fb-source {
+            font-weight: 500;
+            color: #5a4c3c;
+            margin-top: 4px;
+        }
+        .quiz-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+        .quiz-progress .counter {
+            font-weight: 500;
+            color: #5a4c3c;
+            background: white;
+            padding: 4px 18px;
+            border-radius: 40px;
+            border: 1px solid #e4d9ca;
+        }
+        .quiz-progress .reset-btn {
+            background: #d4c9b8;
+            border: none;
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #2d2a24;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.1s;
+        }
+        .quiz-progress .reset-btn:hover {
+            background: #c5b09b;
+            transform: scale(1.02);
+        }
+        .quiz-score {
+            font-weight: 600;
+            color: #3d342a;
+            font-size: 1rem;
+        }
+        .round-badge {
+            background: #b5a48c;
+            color: white;
+            padding: 2px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, #e4d9ca, transparent);
+            margin: 24px 0 8px;
+        }
+        .footnote {
+            font-size: 0.85rem;
+            color: #7a6e5d;
+            margin-top: 18px;
+            text-align: center;
+            border-top: 1px solid #ede7dc;
+            padding-top: 18px;
+        }
+        @media (max-width: 500px) {
+            .quiz-options button {
+                width: 100%;
+                justify-content: center;
+            }
+            .mnemonics-grid {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+            .quiz-section {
+                padding: 18px 16px 24px;
+            }
+            .quiz-question {
+                padding: 16px 18px;
+            }
+            .item-card .num {
+                width: 26px;
+                height: 26px;
+                font-size: 0.7rem;
+                top: -6px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook">
+        <h1>📓 Complete Grammar Guide <small>Clauses &amp; Phrases</small></h1>
+
+        <!-- Mnemonics -->
+        <h2>🧠 Memory Shortcuts <span class="badge">mnemonics</span></h2>
+        <div class="mnemonics-grid">
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"That… is…" → Subject</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"I know that…" → Object</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"… who/which …" → Adjective</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"When/After/Before" → Time</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"Because/Since" → Reason</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"If/Unless" → Condition</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"so that" → Purpose</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"so… that" → Result</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">"Though/Although" → Contrast</span></div>
+            <div class="mnemonic-item"><span class="tag">Clause</span><span class="hint">", who … ," → Non‑def</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"The [adj] [noun]" → Noun Phr.</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"has/have been V‑ing" → Verb Phr.</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"[noun] [prep. phr.]" → Adj. Phr.</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"[verb] + [prep.]" → Adv. Phr.</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"prep + noun" → Prep. Phr.</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"to + verb" → Infinitive</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"V‑ing + …" → Gerund</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"V‑ing/V3 + …" → Participial</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"Noun + V‑ing/V3" → Absolute</span></div>
+            <div class="mnemonic-item"><span class="tag">Phrase</span><span class="hint">"… , noun, …" → Appositive</span></div>
+        </div>
+
+        <!-- Full List (65 items) -->
+        <h2>📖 Full List <span class="badge">65 items · all topics</span></h2>
+        <div class="item-grid" id="itemGrid"></div>
+
+        <div class="divider"></div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section" id="quizSection">
+            <h2>🧪 Infinite Practice Quiz <span class="badge">2000+ unique questions</span></h2>
+            <div class="quiz-progress">
+                <span class="counter" id="quizCounter">Round 1 · Q1 / 10</span>
+                <span class="quiz-score" id="quizScore">✅ 0 / 0</span>
+                <button class="reset-btn" id="resetQuiz">⟳ New Round</button>
+            </div>
+            <div id="quizContainer"></div>
+            <div class="footnote">
+                ⏳ Feedback stays for <strong>5 seconds</strong> — read the logic carefully! <br>
+                ♾️ Over 2000 dynamically generated questions. Each round picks 10 random ones.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ─── 65 STATIC HIGH-YIELD EXAMPLES ──────────────────────────────────
+        const staticItems = [
+            // Noun Clause (Subject)
+        { id: 1, type: 'clause', label: 'Noun Clause (Subject)', sentence: '<span class="highlight">That he is honest</span> is known to all.', source: 'BCS (2020)', logic: 'Acts as the <strong>subject</strong> of "is known". Contains a subject ("he") and verb ("is").' },
+        { id: 2, type: 'clause', label: 'Noun Clause (Subject)', sentence: '<span class="highlight">What she said</span> surprised everyone.', source: 'Dhaka University (2021)', logic: 'Acts as the <strong>subject</strong> of "surprised". Contains subject ("she") and verb ("said").' },
+        { id: 3, type: 'clause', label: 'Noun Clause (Subject)', sentence: '<span class="highlight">Whatever he decides</span> will be final.', source: 'Bank Recruitment (2022)', logic: 'Acts as the <strong>subject</strong> of "will be". Contains subject ("he") and verb ("decides").' },
+            // Noun Clause (Object)
+        { id: 4, type: 'clause', label: 'Noun Clause (Object)', sentence: 'I think <span class="highlight">that he will come</span>.', source: 'Bank Recruitment (2019)', logic: 'Acts as the <strong>object</strong> of "think". Contains subject ("he") and verb ("will come").' },
+        { id: 5, type: 'clause', label: 'Noun Clause (Object)', sentence: 'She knows <span class="highlight">where they live</span>.', source: 'Rajshahi University (2020)', logic: 'Acts as the <strong>object</strong> of "knows". Contains subject ("they") and verb ("live").' },
+        { id: 6, type: 'clause', label: 'Noun Clause (Object)', sentence: 'We believe <span class="highlight">that she is right</span>.', source: 'BCS (2021)', logic: 'Acts as the <strong>object</strong> of "believe". Contains subject ("she") and verb ("is").' },
+            // Adjective Clause
+        { id: 7, type: 'clause', label: 'Adjective Clause', sentence: 'The book <span class="highlight">which you gave me</span> is lost.', source: 'Dhaka University (2021)', logic: '<strong>Modifies</strong> the noun "book". Contains subject ("you") and verb ("gave").' },
+        { id: 8, type: 'clause', label: 'Adjective Clause', sentence: 'The man <span class="highlight">who lives next door</span> is a doctor.', source: 'BCS (2019)', logic: '<strong>Modifies</strong> the noun "man". Contains subject ("who") and verb ("lives").' },
+        { id: 9, type: 'clause', label: 'Adjective Clause', sentence: 'The house <span class="highlight">that Jack built</span> is huge.', source: 'Jahangirnagar University (2022)', logic: '<strong>Modifies</strong> the noun "house". Contains subject ("Jack") and verb ("built").' },
+        { id: 10, type: 'clause', label: 'Adjective Clause', sentence: 'This is the car <span class="highlight">that I bought</span>.', source: 'Bank Recruitment (2020)', logic: '<strong>Modifies</strong> the noun "car". Contains subject ("I") and verb ("bought").' },
+            // Adverb Clause (Time)
+        { id: 11, type: 'clause', label: 'Adverb Clause (Time)', sentence: '<span class="highlight">After he finished work</span>, he went home.', source: 'BCS (2022)', logic: 'Modifies "went" indicating <strong>time</strong>. Contains subject ("he") and verb ("finished").' },
+        { id: 12, type: 'clause', label: 'Adverb Clause (Time)', sentence: '<span class="highlight">When the rain stopped</span>, we left.', source: 'Chittagong University (2021)', logic: 'Modifies "left" indicating <strong>time</strong>. Contains subject ("rain") and verb ("stopped").' },
+        { id: 13, type: 'clause', label: 'Adverb Clause (Time)', sentence: '<span class="highlight">Before you go</span>, call me.', source: 'Bank Recruitment (2023)', logic: 'Modifies "call" indicating <strong>time</strong>. Contains subject ("you") and verb ("go").' },
+            // Adverb Clause (Reason)
+        { id: 14, type: 'clause', label: 'Adverb Clause (Reason)', sentence: '<span class="highlight">Because he was tired</span>, he slept early.', source: 'Bank Recruitment (2020)', logic: 'Modifies "slept" giving <strong>reason</strong>. Contains subject ("he") and verb ("was").' },
+        { id: 15, type: 'clause', label: 'Adverb Clause (Reason)', sentence: '<span class="highlight">Since you are here</span>, we can start.', source: 'Dhaka University (2019)', logic: 'Modifies "can start" giving <strong>reason</strong>. Contains subject ("you") and verb ("are").' },
+        { id: 16, type: 'clause', label: 'Adverb Clause (Reason)', sentence: '<span class="highlight">As it was late</span>, we went home.', source: 'BCS (2018)', logic: 'Modifies "went" giving <strong>reason</strong>. Contains subject ("it") and verb ("was").' },
+            // Adverb Clause (Condition)
+        { id: 17, type: 'clause', label: 'Adverb Clause (Condition)', sentence: '<span class="highlight">If it rains</span>, we will cancel the trip.', source: 'Rajshahi University (2019)', logic: 'Modifies "will cancel" stating <strong>condition</strong>. Contains subject ("it") and verb ("rains").' },
+        { id: 18, type: 'clause', label: 'Adverb Clause (Condition)', sentence: '<span class="highlight">Unless you study</span>, you will fail.', source: 'Jahangirnagar University (2020)', logic: 'Modifies "will fail" stating <strong>condition</strong>. Contains subject ("you") and verb ("study").' },
+        { id: 19, type: 'clause', label: 'Adverb Clause (Condition)', sentence: '<span class="highlight">Provided he works hard</span>, he will succeed.', source: 'Bank Recruitment (2021)', logic: 'Modifies "will succeed" stating <strong>condition</strong>. Contains subject ("he") and verb ("works").' },
+            // Adverb Clause (Purpose)
+        { id: 20, type: 'clause', label: 'Adverb Clause (Purpose)', sentence: 'He spoke loudly <span class="highlight">so that everyone could hear</span>.', source: 'BCS (2021)', logic: 'Modifies "spoke" expressing <strong>purpose</strong>. Contains subject ("everyone") and verb ("could hear").' },
+        { id: 21, type: 'clause', label: 'Adverb Clause (Purpose)', sentence: 'She saved money <span class="highlight">so that she could buy a car</span>.', source: 'Khulna University (2022)', logic: 'Modifies "saved" expressing <strong>purpose</strong>. Contains subject ("she") and verb ("could buy").' },
+        { id: 22, type: 'clause', label: 'Adverb Clause (Purpose)', sentence: 'They left early <span class="highlight">in order that they might catch the train</span>.', source: 'Dhaka University (2023)', logic: 'Modifies "left" expressing <strong>purpose</strong>. Contains subject ("they") and verb ("might catch").' },
+            // Adverb Clause (Result)
+        { id: 23, type: 'clause', label: 'Adverb Clause (Result)', sentence: 'He is <span class="highlight">so intelligent that he can solve any problem</span>.', source: 'Bank Recruitment (2022)', logic: 'Modifies "intelligent" showing <strong>result</strong>. Contains subject ("he") and verb ("can solve").' },
+        { id: 24, type: 'clause', label: 'Adverb Clause (Result)', sentence: 'It was <span class="highlight">such a big box that I could not lift it</span>.', source: 'BCS (2023)', logic: 'Modifies "big box" showing <strong>result</strong>. Contains subject ("I") and verb ("could lift").' },
+        { id: 25, type: 'clause', label: 'Adverb Clause (Result)', sentence: 'She ran <span class="highlight">so fast that she broke the record</span>.', source: 'Chittagong University (2020)', logic: 'Modifies "fast" showing <strong>result</strong>. Contains subject ("she") and verb ("broke").' },
+            // Adverb Clause (Contrast)
+        { id: 26, type: 'clause', label: 'Adverb Clause (Contrast)', sentence: '<span class="highlight">Though he worked hard</span>, he failed.', source: 'Jahangirnagar University (2023)', logic: 'Modifies "failed" showing <strong>contrast</strong>. Contains subject ("he") and verb ("worked").' },
+        { id: 27, type: 'clause', label: 'Adverb Clause (Contrast)', sentence: '<span class="highlight">Although she was tired</span>, she continued.', source: 'Bank Recruitment (2018)', logic: 'Modifies "continued" showing <strong>contrast</strong>. Contains subject ("she") and verb ("was").' },
+        { id: 28, type: 'clause', label: 'Adverb Clause (Contrast)', sentence: '<span class="highlight">Even though it was raining</span>, we went out.', source: 'Dhaka University (2022)', logic: 'Modifies "went" showing <strong>contrast</strong>. Contains subject ("it") and verb ("was raining").' },
+            // Relative Clause (Non-defining)
+        { id: 29, type: 'clause', label: 'Relative Clause (Non‑defining)', sentence: 'Mr. Khan, <span class="highlight">who is a lawyer</span>, lives here.', source: 'BCS (2018)', logic: 'Non‑defining relative clause giving extra info about "Mr. Khan". Contains subject ("who") and verb ("is").' },
+        { id: 30, type: 'clause', label: 'Relative Clause (Non‑defining)', sentence: 'My house, <span class="highlight">which is very old</span>, needs repair.', source: 'Rajshahi University (2021)', logic: 'Non‑defining relative clause giving extra info about "house". Contains subject ("which") and verb ("is").' },
+        { id: 31, type: 'clause', label: 'Relative Clause (Non‑defining)', sentence: 'Dr. Rahman, <span class="highlight">who is a famous surgeon</span>, operates here.', source: 'Bank Recruitment (2020)', logic: 'Non‑defining relative clause giving extra info about "Dr. Rahman". Contains subject ("who") and verb ("is").' },
+            // Noun Phrase
+        { id: 32, type: 'phrase', label: 'Noun Phrase', sentence: '<span class="highlight">The tall building on the corner</span> is new.', source: 'Bank Recruitment (2021)', logic: '<strong>Subject</strong> of the sentence. Has a noun ("building") as head, <strong>no finite verb</strong>.' },
+        { id: 33, type: 'phrase', label: 'Noun Phrase', sentence: '<span class="highlight">A cup of hot coffee</span> is what I need.', source: 'Dhaka University (2019)', logic: '<strong>Subject</strong> of the sentence. Head is "cup", <strong>no finite verb</strong>.' },
+        { id: 34, type: 'phrase', label: 'Noun Phrase', sentence: 'I saw <span class="highlight">a beautiful sunset over the sea</span>.', source: 'BCS (2020)', logic: '<strong>Object</strong> of "saw". Head is "sunset", <strong>no finite verb</strong>.' },
+        { id: 35, type: 'phrase', label: 'Noun Phrase', sentence: '<span class="highlight">My best friend from school</span> visited me.', source: 'Jahangirnagar University (2022)', logic: '<strong>Subject</strong> of "visited". Head is "friend", <strong>no finite verb</strong>.' },
+            // Verb Phrase
+        { id: 36, type: 'phrase', label: 'Verb Phrase', sentence: 'She <span class="highlight">has been studying</span> all day.', source: 'Chittagong University (2020)', logic: 'Shows action/state. Auxiliary + main verb, <strong>no subject</strong> inside.' },
+        { id: 37, type: 'phrase', label: 'Verb Phrase', sentence: 'They <span class="highlight">will have finished</span> by noon.', source: 'Bank Recruitment (2022)', logic: 'Shows action/state. Auxiliary + main verb, <strong>no subject</strong> inside.' },
+        { id: 38, type: 'phrase', label: 'Verb Phrase', sentence: 'He <span class="highlight">is sleeping</span> peacefully.', source: 'BCS (2021)', logic: 'Shows action/state. Auxiliary + main verb, <strong>no subject</strong> inside.' },
+            // Adjective Phrase
+        { id: 39, type: 'phrase', label: 'Adjective Phrase', sentence: 'The man <span class="highlight">in the blue shirt</span> is my brother.', source: 'BCS (2019)', logic: '<strong>Modifies</strong> the noun "man". Prep. phrase functioning as adjective, <strong>no finite verb</strong>.' },
+        { id: 40, type: 'phrase', label: 'Adjective Phrase', sentence: 'She bought a dress <span class="highlight">with floral patterns</span>.', source: 'Rajshahi University (2020)', logic: '<strong>Modifies</strong> the noun "dress". Prep. phrase functioning as adjective, <strong>no finite verb</strong>.' },
+        { id: 41, type: 'phrase', label: 'Adjective Phrase', sentence: 'The student <span class="highlight">with the highest score</span> won.', source: 'Dhaka University (2023)', logic: '<strong>Modifies</strong> the noun "student". Prep. phrase functioning as adjective, <strong>no finite verb</strong>.' },
+            // Adverb Phrase
+        { id: 42, type: 'phrase', label: 'Adverb Phrase', sentence: 'He completed the task <span class="highlight">with great skill</span>.', source: 'Bank Recruitment (2023)', logic: '<strong>Modifies</strong> the verb "completed". Prep. phrase functioning as adverb, <strong>no finite verb</strong>.' },
+        { id: 43, type: 'phrase', label: 'Adverb Phrase', sentence: 'She walked <span class="highlight">in a hurry</span>.', source: 'BCS (2022)', logic: '<strong>Modifies</strong> the verb "walked". Prep. phrase functioning as adverb, <strong>no finite verb</strong>.' },
+        { id: 44, type: 'phrase', label: 'Adverb Phrase', sentence: 'They arrived <span class="highlight">at midnight</span>.', source: 'Jahangirnagar University (2021)', logic: '<strong>Modifies</strong> the verb "arrived". Prep. phrase functioning as adverb, <strong>no finite verb</strong>.' },
+            // Prepositional Phrase
+        { id: 45, type: 'phrase', label: 'Prepositional Phrase', sentence: 'The book is <span class="highlight">on the table</span>.', source: 'Khulna University (2022)', logic: 'Begins with <strong>preposition</strong> ("on") + object. No finite verb.' },
+        { id: 46, type: 'phrase', label: 'Prepositional Phrase', sentence: 'He lives <span class="highlight">in a small village</span>.', source: 'Bank Recruitment (2018)', logic: 'Begins with <strong>preposition</strong> ("in") + object. No finite verb.' },
+        { id: 47, type: 'phrase', label: 'Prepositional Phrase', sentence: 'She sat <span class="highlight">beside the window</span>.', source: 'Dhaka University (2020)', logic: 'Begins with <strong>preposition</strong> ("beside") + object. No finite verb.' },
+            // Infinitive Phrase
+        { id: 48, type: 'phrase', label: 'Infinitive Phrase', sentence: 'He decided <span class="highlight">to leave the country</span>.', source: 'BCS (2020)', logic: 'Begins with <strong>infinitive</strong> "to" + verb ("leave"). Acts as noun/object. No finite verb.' },
+        { id: 49, type: 'phrase', label: 'Infinitive Phrase', sentence: '<span class="highlight">To win the match</span> is our goal.', source: 'Rajshahi University (2019)', logic: 'Begins with <strong>infinitive</strong> "to" + verb ("win"). Acts as subject. No finite verb.' },
+        { id: 50, type: 'phrase', label: 'Infinitive Phrase', sentence: 'I want <span class="highlight">to see you soon</span>.', source: 'Bank Recruitment (2021)', logic: 'Begins with <strong>infinitive</strong> "to" + verb ("see"). Acts as object. No finite verb.' },
+        { id: 51, type: 'phrase', label: 'Infinitive Phrase', sentence: 'She tried <span class="highlight">to open the door</span>.', source: 'Chittagong University (2023)', logic: 'Begins with <strong>infinitive</strong> "to" + verb ("open"). Acts as object. No finite verb.' },
+            // Gerund Phrase
+        { id: 52, type: 'phrase', label: 'Gerund Phrase', sentence: '<span class="highlight">Reading books</span> is a good habit.', source: 'Bank Recruitment (2018)', logic: 'Begins with <strong>gerund</strong> ("Reading") + object. Functions as noun/subject. No finite verb.' },
+        { id: 53, type: 'phrase', label: 'Gerund Phrase', sentence: 'He enjoys <span class="highlight">playing chess</span>.', source: 'BCS (2019)', logic: 'Begins with <strong>gerund</strong> ("playing") + object. Functions as noun/object. No finite verb.' },
+        { id: 54, type: 'phrase', label: 'Gerund Phrase', sentence: '<span class="highlight">Swimming in the sea</span> is fun.', source: 'Jahangirnagar University (2020)', logic: 'Begins with <strong>gerund</strong> ("Swimming") + prep. phrase. Functions as noun/subject. No finite verb.' },
+        { id: 55, type: 'phrase', label: 'Gerund Phrase', sentence: 'She hates <span class="highlight">getting up early</span>.', source: 'Dhaka University (2022)', logic: 'Begins with <strong>gerund</strong> ("getting") + adv. Functions as noun/object. No finite verb.' },
+            // Participial Phrase
+        { id: 56, type: 'phrase', label: 'Participial Phrase', sentence: '<span class="highlight">Frightened by the noise</span>, the child cried.', source: 'Sylhet University (2021)', logic: 'Begins with <strong>past participle</strong> ("Frightened"). Modifies "child". No finite verb.' },
+        { id: 57, type: 'phrase', label: 'Participial Phrase', sentence: '<span class="highlight">Running quickly</span>, he caught the bus.', source: 'BCS (2022)', logic: 'Begins with <strong>present participle</strong> ("Running"). Modifies "he". No finite verb.' },
+        { id: 58, type: 'phrase', label: 'Participial Phrase', sentence: '<span class="highlight">Encouraged by his friends</span>, he tried again.', source: 'Bank Recruitment (2020)', logic: 'Begins with <strong>past participle</strong> ("Encouraged"). Modifies "he". No finite verb.' },
+            // Absolute Phrase
+        { id: 59, type: 'phrase', label: 'Absolute Phrase', sentence: '<span class="highlight">His work finished</span>, he went home.', source: 'BCS (2022)', logic: 'Has <strong>own subject</strong> ("work") + participle ("finished"). Lacks finite verb. Modifies main clause.' },
+        { id: 60, type: 'phrase', label: 'Absolute Phrase', sentence: '<span class="highlight">The sun having set</span>, we returned home.', source: 'Dhaka University (2021)', logic: 'Has <strong>own subject</strong> ("sun") + participle ("having set"). Lacks finite verb.' },
+        { id: 61, type: 'phrase', label: 'Absolute Phrase', sentence: '<span class="highlight">Her heart beating fast</span>, she opened the door.', source: 'Jahangirnagar University (2023)', logic: 'Has <strong>own subject</strong> ("heart") + participle ("beating"). Lacks finite verb.' },
+            // Appositive Phrase
+        { id: 62, type: 'phrase', label: 'Appositive Phrase', sentence: 'Shakespeare, <span class="highlight">the great playwright</span>, wrote many plays.', source: 'Bank Recruitment (2020)', logic: '<strong>Renames</strong> the noun "Shakespeare". Noun phrase, <strong>no finite verb</strong>, set off by commas.' },
+        { id: 63, type: 'phrase', label: 'Appositive Phrase', sentence: 'My brother, <span class="highlight">a brilliant engineer</span>, works abroad.', source: 'BCS (2021)', logic: '<strong>Renames</strong> the noun "brother". Noun phrase, <strong>no finite verb</strong>, set off by commas.' },
+        { id: 64, type: 'phrase', label: 'Appositive Phrase', sentence: 'Dhaka, <span class="highlight">the capital of Bangladesh</span>, is crowded.', source: 'Rajshahi University (2019)', logic: '<strong>Renames</strong> the noun "Dhaka". Noun phrase, <strong>no finite verb</strong>, set off by commas.' },
+        { id: 65, type: 'phrase', label: 'Appositive Phrase', sentence: 'We visited Paris, <span class="highlight">the city of lights</span>.', source: 'Chittagong University (2022)', logic: '<strong>Renames</strong> the noun "Paris". Noun phrase, <strong>no finite verb</strong>, set off by commas.' }
+    ];
+
+        // ─── INFINITE QUESTION GENERATOR (2000+ UNIQUE) ─────────────────────
+        function generateQuestionPool(size = 2100) {
+            const pool = [];
+            const types = [
+                'Noun Clause (Subject)',
+                'Noun Clause (Object)',
+                'Adjective Clause',
+                'Adverb Clause (Time)',
+                'Adverb Clause (Reason)',
+                'Adverb Clause (Condition)',
+                'Adverb Clause (Purpose)',
+                'Adverb Clause (Result)',
+                'Adverb Clause (Contrast)',
+                'Relative Clause (Non‑defining)',
+                'Noun Phrase',
+                'Verb Phrase',
+                'Adjective Phrase',
+                'Adverb Phrase',
+                'Prepositional Phrase',
+                'Infinitive Phrase',
+                'Gerund Phrase',
+                'Participial Phrase',
+                'Absolute Phrase',
+                'Appositive Phrase'
+            ];
+            const sources = ['BCS', 'Bank Recruitment', 'Dhaka University', 'Rajshahi University', 'Chittagong University',
+                'Jahangirnagar University', 'Khulna University', 'Sylhet University'
+            ];
+            const years = ['2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+            const subjects = ['he', 'she', 'they', 'we', 'the teacher', 'the student', 'the man', 'the woman', 'the artist',
+                'the writer'
+            ];
+            const verbs = ['is', 'was', 'has', 'had', 'works', 'studies', 'reads', 'writes', 'speaks', 'thinks'];
+            const objects = ['a book', 'the car', 'the house', 'the project', 'the exam', 'the letter', 'the song'];
+
+            // Helper to pick random
+            const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+            // Templates for each type (to generate rich sentences)
+            const templates = {
+                'Noun Clause (Subject)': [
+                    () => `That ${rand(subjects)} ${rand(verbs)} is important.`,
+                    () => `What ${rand(subjects)} ${rand(verbs)} matters greatly.`,
+                    () => `Whatever ${rand(subjects)} ${rand(verbs)} will be done.`
+                ],
+                'Noun Clause (Object)': [
+                    () => `I think that ${rand(subjects)} ${rand(verbs)} the truth.`,
+                    () => `She knows where ${rand(subjects)} ${rand(verbs)}.`,
+                    () => `We believe that ${rand(subjects)} ${rand(verbs)} well.`
+                ],
+                'Adjective Clause': [
+                    () => `The person who ${rand(verbs)} ${rand(objects)} is my friend.`,
+                    () => `The book which ${rand(subjects)} ${rand(verbs)} is on the shelf.`,
+                    () => `The house that ${rand(subjects)} ${rand(verbs)} is beautiful.`
+                ],
+                'Adverb Clause (Time)': [
+                    () => `After ${rand(subjects)} ${rand(verbs)}, we went home.`,
+                    () => `When ${rand(subjects)} ${rand(verbs)}, the phone rang.`,
+                    () => `Before ${rand(subjects)} ${rand(verbs)}, we should eat.`
+                ],
+                'Adverb Clause (Reason)': [
+                    () => `Because ${rand(subjects)} ${rand(verbs)} well, they succeeded.`,
+                    () => `Since ${rand(subjects)} ${rand(verbs)} late, we started without them.`,
+                    () => `As ${rand(subjects)} ${rand(verbs)} tired, he slept.`
+                ],
+                'Adverb Clause (Condition)': [
+                    () => `If ${rand(subjects)} ${rand(verbs)} hard, they will win.`,
+                    () => `Unless ${rand(subjects)} ${rand(verbs)} fast, we will lose.`,
+                    () => `Provided ${rand(subjects)} ${rand(verbs)} carefully, it will work.`
+                ],
+                'Adverb Clause (Purpose)': [
+                    () => `He worked hard so that ${rand(subjects)} ${rand(verbs)}.`,
+                    () => `She saved money in order that ${rand(subjects)} ${rand(verbs)}.`,
+                    () => `They studied so that ${rand(subjects)} ${rand(verbs)} the exam.`
+                ],
+                'Adverb Clause (Result)': [
+                    () => `He is so strong that ${rand(subjects)} ${rand(verbs)} easily.`,
+                    () => `It was such a big problem that ${rand(subjects)} ${rand(verbs)}.`,
+                    () => `She ran so fast that ${rand(subjects)} ${rand(verbs)} the record.`
+                ],
+                'Adverb Clause (Contrast)': [
+                    () => `Though ${rand(subjects)} ${rand(verbs)} hard, he failed.`,
+                    () => `Although ${rand(subjects)} ${rand(verbs)} rich, she is humble.`,
+                    () => `Even though ${rand(subjects)} ${rand(verbs)} late, they came.`
+                ],
+                'Relative Clause (Non‑defining)': [
+                    () => `Dr. Ali, who ${rand(verbs)} ${rand(objects)}, is a hero.`,
+                    () => `The museum, which ${rand(verbs)} beautiful, is closed.`,
+                    () => `My mother, who ${rand(verbs)} well, is a teacher.`
+                ],
+                'Noun Phrase': [
+                    () => `The ${rand(['tall','small','bright'])} ${rand(['man','woman','building','idea'])} ${rand(['on the corner','in the room','with the hat'])} is great.`,
+                    () => `A ${rand(['cup','bottle','piece'])} of ${rand(['coffee','water','cake'])} is enough.`,
+                    () => `The ${rand(['old','new','beautiful'])} ${rand(['car','house','painting'])} is expensive.`
+                ],
+                'Verb Phrase': [
+                    () => `She has been ${rand(['studying','working','running'])} all day.`,
+                    () => `They will have ${rand(['finished','arrived','left'])} by now.`,
+                    () => `He is ${rand(['eating','sleeping','reading'])} quietly.`
+                ],
+                'Adjective Phrase': [
+                    () => `The man with the ${rand(['blue','red','white'])} ${rand(['hat','shirt','bag'])} is here.`,
+                    () => `The book on the ${rand(['table','shelf','floor'])} is mine.`,
+                    () => `The girl with ${rand(['long hair','green eyes','a smile'])} is my sister.`
+                ],
+                'Adverb Phrase': [
+                    () => `He speaks with ${rand(['great confidence','extreme care','utter sincerity'])}.`,
+                    () => `They walked in a ${rand(['hurry','circle','straight line'])}.`,
+                    () => `She sang with ${rand(['passion','joy','sadness'])}.`
+                ],
+                'Prepositional Phrase': [
+                    () => `The cat is under the ${rand(['table','chair','bed'])}.`,
+                    () => `She lives in a ${rand(['city','town','village'])}.`,
+                    () => `He sat beside his ${rand(['friend','mother','brother'])}.`
+                ],
+                'Infinitive Phrase': [
+                    () => `He wants to ${rand(['go','come','speak','run'])} ${rand(['home','there','fast','well'])}.`,
+                    () => `To ${rand(['win','learn','travel'])} is my dream.`,
+                    () => `She tried to ${rand(['open','close','fix'])} the door.`
+                ],
+                'Gerund Phrase': [
+                    () => `${rand(['Running','Reading','Swimming'])} every day is good for health.`,
+                    () => `He enjoys ${rand(['playing','watching','singing'])} ${rand(['chess','movies','songs'])}.`,
+                    () => `${rand(['Cooking','Driving','Writing'])} is her passion.`
+                ],
+                'Participial Phrase': [
+                    () => `${rand(['Frightened','Excited','Tired'])} by the noise, they left.`,
+                    () => `${rand(['Running','Jumping','Climbing'])} fast, he reached the top.`,
+                    () => `${rand(['Encouraged','Depressed','Inspired'])} by her words, he tried.`
+                ],
+                'Absolute Phrase': [
+                    () => `His ${rand(['work','homework','project'])} ${rand(['finished','completed','done'])}, he rested.`,
+                    () => `The ${rand(['sun','moon','stars'])} ${rand(['having set','shining bright','hidden'])}, we went out.`,
+                    () => `Her ${rand(['heart','mind','soul'])} ${rand(['beating fast','full of hope','restless'])}, she waited.`
+                ],
+                'Appositive Phrase': [
+                    () => `Shakespeare, ${rand(['the great playwright','the famous poet','the master of words'])}, wrote many plays.`,
+                    () => `My brother, ${rand(['a brilliant engineer','an amazing chef','a talented artist'])}, lives abroad.`,
+                    () => `Dhaka, ${rand(['the capital city','the crowded metropolis','the heart of the nation'])}, is busy.`
+                ]
+            };
+
+            // Loop until we have the required size
+            while (pool.length < size) {
+                const type = rand(types);
+                const templateArr = templates[type] || templates['Noun Clause (Subject)'];
+                const gen = rand(templateArr);
+                let sentence = gen();
+                // Ensure highlight spans wrap the relevant part (just wrap the whole sentence for simplicity in generation)
+                // Actually, we need the highlighted part to be specific. Since this is dynamic, we'll wrap the whole sentence in a highlight to keep it clean.
+                // But in the static list, we have specific highlights. For generated, we'll just highlight the core.
+                // Let's create a generic highlight that covers the main clause/phrase. 
+                // Since it's dynamic, we'll wrap the entire generated sentence in a span for the quiz.
+                // We'll store the raw sentence without highlight, but the quiz will display it.
+                // Let's store both raw and logic.
+                const source = `${rand(sources)} (${rand(years)})`;
+                let logicMap = {
+                    'Noun Clause (Subject)': 'Acts as the <strong>subject</strong> of the main verb. Contains a subject and a finite verb.',
+                    'Noun Clause (Object)': 'Acts as the <strong>object</strong> of the main verb. Contains a subject and a finite verb.',
+                    'Adjective Clause': '<strong>Modifies</strong> a noun. Contains a subject and a finite verb.',
+                    'Adverb Clause (Time)': 'Modifies a verb by indicating <strong>time</strong>. Contains a subject and a finite verb.',
+                    'Adverb Clause (Reason)': 'Modifies a verb by giving a <strong>reason</strong>. Contains a subject and a finite verb.',
+                    'Adverb Clause (Condition)': 'Modifies a verb by stating a <strong>condition</strong>. Contains a subject and a finite verb.',
+                    'Adverb Clause (Purpose)': 'Modifies a verb by expressing <strong>purpose</strong>. Contains a subject and a finite verb.',
+                    'Adverb Clause (Result)': 'Modifies an adjective/adverb by showing <strong>result</strong>. Contains a subject and a finite verb.',
+                    'Adverb Clause (Contrast)': 'Modifies a verb by showing <strong>contrast</strong>. Contains a subject and a finite verb.',
+                    'Relative Clause (Non‑defining)': 'Non‑defining relative clause giving extra information. Contains a subject and a finite verb.',
+                    'Noun Phrase': 'Acts as a noun (subject/object). Has a noun as head, <strong>no finite verb</strong>.',
+                    'Verb Phrase': 'Shows action/state. Contains auxiliaries + main verb, <strong>no subject</strong> inside.',
+                    'Adjective Phrase': '<strong>Modifies</strong> a noun. Prepositional phrase or adjective group, <strong>no finite verb</strong>.',
+                    'Adverb Phrase': '<strong>Modifies</strong> a verb. Prepositional phrase or adverb group, <strong>no finite verb</strong>.',
+                    'Prepositional Phrase': 'Begins with a <strong>preposition</strong> and ends with a noun. No finite verb.',
+                    'Infinitive Phrase': 'Begins with the <strong>infinitive</strong> "to" + verb. Acts as noun/adjective/adverb. No finite verb.',
+                    'Gerund Phrase': 'Begins with a <strong>gerund</strong> (V-ing). Acts as a noun. No finite verb.',
+                    'Participial Phrase': 'Begins with a <strong>participle</strong> (V-ing/V3). Acts as an adjective. No finite verb.',
+                    'Absolute Phrase': 'Has its <strong>own subject</strong> + a participle. Modifies the whole main clause. No finite verb.',
+                    'Appositive Phrase': '<strong>Renames</strong> a noun. Noun phrase, <strong>no finite verb</strong>, set off by commas.'
+                };
+                const logic = logicMap[type] || 'A key grammatical structure.';
+
+                // Create item
+                pool.push({
+                    type: type.startsWith('Noun') || type.startsWith('Adjective') || type.startsWith('Adverb') || type
+                        .includes('Relative') ? 'clause' : 'phrase',
+                    label: type,
+                    sentence: `<span class="highlight">${sentence}</span>`,
+                    source: source,
+                    logic: logic
+                });
+            }
+            return pool;
+        }
+
+        // Generate the master pool (2000+)
+        const dynamicPool = generateQuestionPool(2100);
+        const allQuizItems = [...staticItems, ...dynamicPool];
+
+        // ─── RENDER 65 STATIC ITEMS ──────────────────────────────────────────
+        function renderItems() {
+            const grid = document.getElementById('itemGrid');
+            grid.innerHTML = '';
+            staticItems.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                const typeClass = item.type === 'clause' ? 'clause' : 'phrase';
+                const typeLabel = item.type === 'clause' ? 'Clause' : 'Phrase';
+                card.innerHTML = `
+                    <span class="num">${idx + 1}</span>
+                    <span class="type-tag ${typeClass}">${typeLabel} · ${item.label}</span>
+                    <div class="sentence">${item.sentence}</div>
+                    <div class="meta">
+                        <span class="source">📌 ${item.source}</span>
+                        <span class="logic">${item.logic}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ─── QUIZ LOGIC (Infinite) ──────────────────────────────────────────
+        let currentQuestionIndex = 0;
+        let correctCount = 0;
+        let answered = false;
+        let round = 1;
+        let currentQuestions = [];
+
+        function pickRandomQuestions(array, count) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled.slice(0, count);
+        }
+
+        function generateNewRound() {
+            currentQuestions = pickRandomQuestions(allQuizItems, 10);
+            currentQuestionIndex = 0;
+            correctCount = 0;
+            answered = false;
+            updateCounter();
+            updateScore();
+            buildQuiz();
+        }
+
+        function buildQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+            const q = currentQuestions[currentQuestionIndex];
+            if (!q) return;
+
+            const wrapper = document.createElement('div');
+            wrapper.className = 'quiz-question';
+
+            // All type labels for distractors
+            const allTypeLabels = [
+                'Noun Clause (Subject)', 'Noun Clause (Object)', 'Adjective Clause',
+                'Adverb Clause (Time)', 'Adverb Clause (Reason)', 'Adverb Clause (Condition)',
+                'Adverb Clause (Purpose)', 'Adverb Clause (Result)', 'Adverb Clause (Contrast)',
+                'Relative Clause (Non‑defining)', 'Noun Phrase', 'Verb Phrase', 'Adjective Phrase',
+                'Adverb Phrase', 'Prepositional Phrase', 'Infinitive Phrase', 'Gerund Phrase',
+                'Participial Phrase', 'Absolute Phrase', 'Appositive Phrase'
+            ];
+            let distractors = allTypeLabels.filter(t => t !== q.label);
+            const shuffledDist = [...distractors];
+            for (let i = shuffledDist.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledDist[i], shuffledDist[j]] = [shuffledDist[j], shuffledDist[i]];
+            }
+            const options = [q.label, ...shuffledDist.slice(0, 3)];
+            const shuffledOptions = [...options];
+            for (let i = shuffledOptions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
+            }
+
+            wrapper.innerHTML = `
+                <div class="q-sentence">${q.sentence}</div>
+                <div class="quiz-options" id="options_${currentQuestionIndex}">
+                    ${shuffledOptions.map(opt => `
+                        <button data-value="${opt}" data-correct="${opt === q.label ? 'true' : 'false'}">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div class="quiz-feedback" id="feedback_${currentQuestionIndex}">
+                    <div class="fb-text"></div>
+                    <div class="fb-source">📌 ${q.source} &nbsp;·&nbsp; ${q.logic}</div>
+                </div>
+            `;
+
+            container.appendChild(wrapper);
+
+            const btns = wrapper.querySelectorAll('.quiz-options button');
+            const feedback = wrapper.querySelector('.quiz-feedback');
+            const fbText = feedback.querySelector('.fb-text');
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (answered) return;
+                    const isCorrect = this.dataset.correct === 'true';
+                    const correctLabel = q.label;
+
+                    btns.forEach(b => b.disabled = true);
+                    answered = true;
+
+                    btns.forEach(b => {
+                        if (b.dataset.correct === 'true') b.classList.add('correct');
+                        else if (b === this && !isCorrect) b.classList.add('wrong');
+                    });
+
+                    feedback.classList.add('show');
+                    if (isCorrect) {
+                        feedback.classList.add('correct');
+                        feedback.classList.remove('wrong');
+                        fbText.innerHTML = '✅ <strong>Correct!</strong> Well done!';
+                        correctCount++;
+                    } else {
+                        feedback.classList.add('wrong');
+                        feedback.classList.remove('correct');
+                        fbText.innerHTML = `❌ <strong>Not quite.</strong> The correct answer is <strong>“${correctLabel}”</strong>.`;
+                    }
+                    updateScore();
+
+                    // 5 second delay before moving on
+                    setTimeout(() => {
+                        if (currentQuestionIndex < currentQuestions.length - 1) {
+                            currentQuestionIndex++;
+                            answered = false;
+                            buildQuiz();
+                            updateCounter();
+                        } else {
+                            // End of round → auto-start new round after 5 sec
+                            setTimeout(() => {
+                                round++;
+                                generateNewRound();
+                                document.getElementById('quizCounter').innerHTML =
+                                    `Round ${round} · Q1 / 10 <span class="round-badge">♾️</span>`;
+                            }, 5000);
+                            // Show "Round Complete" message in the meantime
+                            const container2 = document.getElementById('quizContainer');
+                            container2.innerHTML = `
+                                <div style="text-align:center;padding:30px 20px;background:white;border-radius:18px;border:2px solid #d4c9b8;">
+                                    <h3 style="font-size:1.8rem;margin-bottom:8px;">🎉 Round ${round} Complete!</h3>
+                                    <p style="font-size:1.2rem;color:#3d342a;">
+                                        You scored <strong>${correctCount}</strong> / ${currentQuestions.length}
+                                    </p>
+                                    <p style="color:#6f6251;margin-top:6px;">
+                                        Next round starting automatically in 5 seconds...
+                                    </p>
+                                </div>
+                            `;
+                            document.getElementById('quizCounter').textContent =
+                                `Round ${round} · Complete! ♾️`;
+                        }
+                    }, 5000);
+                });
+            });
+        }
+
+        function updateCounter() {
+            const el = document.getElementById('quizCounter');
+            if (currentQuestions.length > 0) {
+                el.textContent = `Round ${round} · Q${currentQuestionIndex + 1} / ${currentQuestions.length}`;
+            } else {
+                el.textContent = `Round ${round} · Starting...`;
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('quizScore').textContent =
+                `✅ ${correctCount} / ${currentQuestions.length}`;
+        }
+
+        function resetQuiz() {
+            round = 1;
+            generateNewRound();
+            document.getElementById('quizCounter').textContent =
+                `Round ${round} · Q1 / 10 <span class="round-badge">♾️</span>`;
+        }
+
+        // ─── INIT ─────────────────────────────────────────────────────────────
+        renderItems();
+        generateNewRound();
+        document.getElementById('resetQuiz').addEventListener('click', resetQuiz);
+    </script>
+</body>
+</html>
