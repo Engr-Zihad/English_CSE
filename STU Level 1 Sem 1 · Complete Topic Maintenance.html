@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>PhD English — HSTU Level 1 Sem 1 · Complete Topic Maintenance</title>
+    <style>
+        /* ─── RESET & BASE ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f4f2f7;
+            color: #1a1a2e;
+            line-height: 1.7;
+            padding: 1.5rem;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2.2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+            padding: 2rem 2.5rem;
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(145deg, #1a1a2e, #4a3f7a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subhead {
+            font-size: 1rem;
+            color: #6b6b80;
+            border-left: 5px solid #a78bfa;
+            padding-left: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .badge-exam {
+            background: #eae7f2;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2d1f6b;
+        }
+
+        /* ─── TABS ─── */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2.2rem;
+            border-bottom: 2px solid #ede9e6;
+            padding-bottom: 0.8rem;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.4rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            color: #5c5c72;
+            transition: 0.2s;
+        }
+        .tab-btn:hover {
+            background: #f0edf9;
+            color: #2d2d4a;
+        }
+        .tab-btn.active {
+            background: #1e1e3a;
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(30, 30, 58, 0.15);
+        }
+
+        /* ─── PANELS ─── */
+        .topic-panel {
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .topic-panel.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── REFERENCE SECTION (Rules & Examples) ─── */
+        .ref-section {
+            background: #faf9fc;
+            border-radius: 1.6rem;
+            padding: 1.6rem 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #ede9f0;
+        }
+        .ref-section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e1e3a;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.6rem;
+        }
+        .ref-section h2 small {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #8a8aa0;
+            background: #eae7f2;
+            padding: 0.1rem 1.2rem;
+            border-radius: 30px;
+        }
+        .ref-section .rule-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
+            margin: 0.5rem 0 1rem;
+        }
+        @media (max-width: 700px) {
+            .ref-section .rule-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        .ref-section .rule-item {
+            background: #f5f2fc;
+            padding: 0.4rem 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #a78bfa;
+            font-size: 0.92rem;
+        }
+        .ref-section .rule-item strong {
+            color: #2d1f6b;
+        }
+        .ref-section .example-box {
+            background: #f2eff8;
+            padding: 0.7rem 1.2rem;
+            border-radius: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.92rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd6f0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .ref-section .topic-example {
+            background: #ffffff;
+            border: 1px solid #e9e5f0;
+            border-radius: 1rem;
+            padding: 1rem 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .ref-section .topic-example .te-title {
+            font-weight: 700;
+            color: #1e1e3a;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+        }
+        .ref-section .topic-example .te-passage {
+            font-size: 0.95rem;
+            background: #f8f6fd;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            margin: 0.4rem 0;
+        }
+        .ref-section .topic-example .te-model {
+            background: #e8edf9;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #6b8fc7;
+            margin: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+        .ref-section .topic-example .te-label {
+            font-weight: 600;
+            color: #2d1f6b;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* ─── PRACTICE BOX ─── */
+        .practice-box {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 1.8rem 2.2rem;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e9e5f0;
+        }
+        .practice-box .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            gap: 0.6rem;
+        }
+        .practice-box .header h3 {
+            font-size: 1.25rem;
+            font-weight: 650;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .practice-box .header h3 span {
+            background: #d9d0f0;
+            font-size: 0.7rem;
+            padding: 0.05rem 1rem;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #2d2d4a;
+        }
+
+        /* question card */
+        .question-card {
+            background: #f8f6fd;
+            border-radius: 1.4rem;
+            padding: 1.6rem 1.8rem;
+            border-left: 6px solid #a78bfa;
+            margin: 0.6rem 0 1.2rem;
+        }
+        .question-card .q-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            background: #d9d0f0;
+            padding: 0.05rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            color: #2d1f6b;
+        }
+        .question-card .q-text {
+            font-size: 1.08rem;
+            font-weight: 500;
+            color: #1a1a2e;
+            margin-bottom: 0.6rem;
+            line-height: 1.8;
+        }
+        .question-card .q-text .blank {
+            display: inline-block;
+            min-width: 110px;
+            border-bottom: 3px dashed #7c6bb5;
+            margin: 0 4px;
+            padding: 0 6px;
+            font-weight: 600;
+            color: #2d1f6b;
+            background: #ede9fe;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .passage-box {
+            background: #f2eff8;
+            padding: 1rem 1.4rem;
+            border-radius: 1rem;
+            border: 1px solid #ddd6f0;
+            margin: 0.6rem 0;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        .passage-box .passage-label {
+            font-weight: 700;
+            color: #2d1f6b;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.2rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.2rem;
+            margin: 0.6rem 0 0.8rem;
+        }
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            background: #f3f0f9;
+            cursor: pointer;
+            transition: 0.15s;
+            border: 2px solid transparent;
+        }
+        .option-item:hover {
+            background: #eae4f5;
+        }
+        .option-item.selected {
+            border-color: #7c6bb5;
+            background: #e4dcf5;
+        }
+        .option-item input[type="radio"] {
+            accent-color: #4f3b8a;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .option-item .opt-label {
+            font-weight: 600;
+            color: #2d2d4a;
+        }
+        .option-item .opt-text {
+            color: #1e1e3a;
+        }
+
+        .written-input {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border-radius: 12px;
+            border: 2px solid #ddd6f0;
+            font-size: 1rem;
+            font-family: inherit;
+            background: #ffffff;
+            resize: vertical;
+            min-height: 80px;
+            transition: 0.15s;
+            margin: 0.4rem 0 0.6rem;
+        }
+        .written-input:focus {
+            border-color: #7c6bb5;
+            outline: none;
+            box-shadow: 0 0 0 4px #ede9fe;
+        }
+
+        .model-answer {
+            background: #e8edf9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            border-left: 4px solid #6b8fc7;
+            margin: 0.6rem 0;
+            font-size: 0.95rem;
+            display: none;
+        }
+        .model-answer.show {
+            display: block;
+        }
+        .model-answer .ma-label {
+            font-weight: 700;
+            color: #1e2e5a;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            align-items: center;
+            margin: 0.8rem 0 0.2rem;
+        }
+        .actions button {
+            background: #1e1e3a;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .actions button:hover {
+            background: #3b2e6b;
+            transform: scale(1.01);
+            box-shadow: 0 8px 20px rgba(30, 30, 58, 0.12);
+        }
+        .actions button.secondary {
+            background: #eae7f2;
+            color: #2d2d4a;
+        }
+        .actions button.secondary:hover {
+            background: #d9d0ec;
+        }
+        .actions button.success {
+            background: #2d6b4f;
+        }
+        .actions button.success:hover {
+            background: #1f523b;
+        }
+        .actions button.info {
+            background: #4a6b8f;
+        }
+        .actions button.info:hover {
+            background: #3a5a7a;
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            padding: 1rem 1.6rem;
+            border-radius: 1.2rem;
+            font-weight: 500;
+            display: none;
+            align-items: flex-start;
+            gap: 0.8rem;
+            flex-direction: column;
+        }
+        .feedback.show {
+            display: flex;
+        }
+        .feedback.correct {
+            background: #e0f2e9;
+            color: #1a4d3a;
+            border-left: 6px solid #2d8f6b;
+        }
+        .feedback.wrong {
+            background: #fde8e8;
+            color: #7a2e2e;
+            border-left: 6px solid #c74a4a;
+        }
+        .feedback.info {
+            background: #e8edf9;
+            color: #1e2e5a;
+            border-left: 6px solid #6b8fc7;
+        }
+        .feedback .fb-head {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            width: 100%;
+        }
+        .feedback .fb-head .fb-icon {
+            font-size: 1.4rem;
+        }
+        .feedback .fb-head .fb-msg {
+            font-weight: 600;
+        }
+        .feedback .fb-detail {
+            font-weight: 400;
+            color: #3d3d5a;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            width: 100%;
+            line-height: 1.6;
+        }
+        .feedback .fb-detail strong {
+            color: #1e1e3a;
+        }
+
+        .score-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 2px solid #ede9f0;
+            font-size: 0.9rem;
+        }
+        .score-bar .stat {
+            background: #f3f0f9;
+            padding: 0.15rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        .score-bar .stat span {
+            font-weight: 700;
+            color: #1e1e3a;
+        }
+        .score-bar .q-counter {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: #6b6b80;
+        }
+
+        .text-muted {
+            color: #6b6b80;
+            font-size: 0.85rem;
+        }
+        .mt-1 {
+            margin-top: 0.6rem;
+        }
+        .gap-1 {
+            gap: 0.4rem;
+        }
+        .flex-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+        }
+        .bb {
+            border-bottom: 2px solid #ede9f0;
+            padding-bottom: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        @media (max-width: 820px) {
+            .container {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .tab-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.78rem;
+            }
+            .practice-box {
+                padding: 1.2rem;
+            }
+            .question-card {
+                padding: 1rem 1.2rem;
+            }
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            .ref-section .rule-list {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 0.6rem;
+            }
+            .container {
+                padding: 0.8rem;
+                border-radius: 1.2rem;
+            }
+            .tab-btn {
+                font-size: 0.7rem;
+                padding: 0.3rem 0.7rem;
+            }
+            .question-card .q-text {
+                font-size: 0.95rem;
+            }
+            .actions button {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+            .passage-box {
+                max-height: 180px;
+                font-size: 0.85rem;
+            }
+            .ref-section .topic-example {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="flex-row">
+            <div>
+                <h1>📘 English Masterclass · HSTU Level 1 Sem 1</h1>
+                <div class="subhead">All rules &amp; examples maintained · unlimited practice</div>
+            </div>
+            <div class="badge-exam">🎯 BSC · Bank Job · HSTU</div>
+        </div>
+
+        <!-- TABS -->
+        <div class="tabs" id="tabContainer">
+            <button class="tab-btn active" data-topic="0">📌 Capitalization &amp; Punctuation</button>
+            <button class="tab-btn" data-topic="1">📄 Paragraph Writing</button>
+            <button class="tab-btn" data-topic="2">✍️ Précis Writing</button>
+            <button class="tab-btn" data-topic="3">🔤 Right Form of Verbs</button>
+            <button class="tab-btn" data-topic="4">📍 Preposition</button>
+            <button class="tab-btn" data-topic="5">🎤 Phonetics &amp; Phonology</button>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- TOPIC 0 — CAPITALIZATION & PUNCTUATION                      -->
+        <!-- ========================================================== -->
+        <div class="topic-panel active" data-topic="0">
+            <div class="ref-section">
+                <h2>All Rules <small>Capitalization &amp; Punctuation</small></h2>
+                <div class="rule-list">
+                    <div class="rule-item"><strong>1.</strong> Capitalise the first word of every sentence.</div>
+                    <div class="rule-item"><strong>2.</strong> Capitalise proper nouns (names, cities, countries, organisations).</div>
+                    <div class="rule-item"><strong>3.</strong> Capitalise days, months, and holidays.</div>
+                    <div class="rule-item"><strong>4.</strong> Capitalise the pronoun <em>I</em> and first word of a quotation.</div>
+                    <div class="rule-item"><strong>5.</strong> Capitalise titles when used before a name (President Biden).</div>
+                    <div class="rule-item"><strong>6.</strong> Capitalise major words in titles (headline style).</div>
+                    <div class="rule-item"><strong>Period (.)</strong> — ends declarative sentences and abbreviations.</div>
+                    <div class="rule-item"><strong>Question Mark (?)</strong> — ends direct questions.</div>
+                    <div class="rule-item"><strong>Exclamation Point (!)</strong> — expresses strong emotion.</div>
+                    <div class="rule-item"><strong>Comma (,)</strong> — separates items, joins clauses, sets off non-essential elements.</div>
+                    <div class="rule-item"><strong>Semicolon (;)</strong> — joins closely related independent clauses.</div>
+                    <div class="rule-item"><strong>Colon (:)</strong> — introduces a list, explanation, or quotation.</div>
+                    <div class="rule-item"><strong>Oxford Comma</strong> — comma before 'and' in a list.</div>
+                    <div class="rule-item"><strong>Quotation Marks (" ")</strong> — enclose direct speech and titles.</div>
+                    <div class="rule-item"><strong>Apostrophe (')</strong> — shows possession and contractions.</div>
+                    <div class="rule-item"><strong>Dash (—)</strong> — indicates a break or interruption.</div>
+                </div>
+                <div class="example-box">❝ Correct: Dr. J. R. R. Tolkien wrote <em>The Lord of the Rings</em>—a masterpiece—and loved punctuation. ❞</div>
+            </div>
+            <div class="practice-box" id="practice0">
+                <div class="header">
+                    <h3>🧠 Practice <span>MCQ + Written</span></h3>
+                    <span class="text-muted" id="qCounter0">Q 1 / ∞</span>
+                </div>
+                <div id="questionContainer0"></div>
+                <div class="actions">
+                    <button class="secondary" onclick="generateQuestion(0)">🔄 Next Question</button>
+                    <button onclick="checkAnswer(0)">✅ Check Answer</button>
+                    <button onclick="showExplanation(0)">📖 Show Explanation</button>
+                </div>
+                <div class="feedback" id="feedback0">
+                    <div class="fb-head"><span class="fb-icon">✔</span><span class="fb-msg" id="fbMsg0">Feedback</span></div>
+                    <div class="fb-detail" id="fbDetail0"></div>
+                </div>
+                <div class="score-bar">
+                    <span class="stat">🎯 Score: <span id="score0">0</span>%</span>
+                    <span class="stat">📊 Attempts: <span id="attempts0">0</span></span>
+                    <span class="stat">✅ Correct: <span id="correct0">0</span></span>
+                    <span class="q-counter">⚡ unlimited questions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- TOPIC 1 — PARAGRAPH WRITING (HSTU topics with full answers) -->
+        <!-- ========================================================== -->
+        <div class="topic-panel" data-topic="1">
+            <div class="ref-section">
+                <h2>5 Most Important Topics <small>HSTU Level 1 Sem 1 · with model answers</small></h2>
+                <div style="margin-bottom:0.8rem;font-weight:500;color:#2d1f6b;">All rules of paragraph writing are applied in each model.</div>
+                <!-- 5 topics with model answers -->
+                <div class="topic-example">
+                    <div class="te-title">🌍 1. Climate Change and Its Impact on Bangladesh</div>
+                    <div class="te-model"><strong>Model Answer:</strong> Climate change is one of the most critical challenges facing Bangladesh today. Rising global temperatures have led to increased melting of polar ice, causing sea levels to rise and threatening the coastal regions of Bangladesh with frequent floods and cyclones. Additionally, erratic rainfall patterns have disrupted agricultural cycles, leading to food insecurity and loss of livelihoods for millions of farmers. The Sundarbans, the world's largest mangrove forest, is also at risk due to saline water intrusion. To mitigate these impacts, the government must invest in climate-resilient infrastructure, promote renewable energy, and raise public awareness about environmental conservation. Without immediate action, climate change will continue to endanger the lives and well-being of the people of Bangladesh.</div>
+                    <div style="font-size:0.85rem;color:#4a3f7a;margin-top:0.2rem;"><strong>Structure:</strong> Topic sentence → supporting evidence (sea-level rise, agriculture, Sundarbans) → call to action → concluding warning.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">💻 2. Digital Bangladesh: Prospects and Challenges</div>
+                    <div class="te-model"><strong>Model Answer:</strong> The vision of "Digital Bangladesh" aims to transform the country into a technologically advanced nation by 2021. The prospects are immense: e-governance can reduce corruption, digital education can reach remote areas, and e-commerce can boost the economy. However, significant challenges remain. The digital divide between urban and rural areas hampers equal access to technology. Cybersecurity threats, inadequate infrastructure, and a lack of skilled IT professionals also pose serious obstacles. Moreover, the high cost of internet and devices excludes many low-income citizens from the digital revolution. To overcome these challenges, the government must invest in broadband infrastructure, provide affordable devices, and train a skilled workforce. Only then can Bangladesh fully realise the benefits of digitalisation.</div>
+                    <div style="font-size:0.85rem;color:#4a3f7a;margin-top:0.2rem;"><strong>Structure:</strong> Topic sentence → prospects (e-governance, education, e-commerce) → challenges (digital divide, cybersecurity, cost) → solutions → concluding statement.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">🎓 3. Higher Education in Bangladesh: Problems and Solutions</div>
+                    <div class="te-model"><strong>Model Answer:</strong> Higher education in Bangladesh faces several critical problems that hinder its quality and relevance. Firstly, the curriculum is often outdated and fails to meet the demands of the modern job market. Secondly, there is a severe shortage of qualified and experienced faculty members, compounded by inadequate research facilities and funding. Additionally, the prevalence of rote learning rather than critical thinking stifles intellectual growth. To address these issues, the government should revise the curriculum to align with industry needs and invest in faculty development programs. Universities should encourage research, provide modern laboratories, and promote collaboration with international institutions. Furthermore, a shift from traditional examinations to continuous assessment would foster deeper learning. With these reforms, higher education in Bangladesh can produce skilled graduates capable of contributing to national development.</div>
+                    <div style="font-size:0.85rem;color:#4a3f7a;margin-top:0.2rem;"><strong>Structure:</strong> Topic sentence → problems (curriculum, faculty, rote learning) → solutions (curriculum reform, faculty development, assessment) → concluding vision.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">🧑‍🤝‍🧑 4. The Role of Youth in Nation Building</div>
+                    <div class="te-model"><strong>Model Answer:</strong> The youth of a nation are its most valuable asset, possessing the energy, creativity, and idealism necessary for nation building. In Bangladesh, where more than 60% of the population is under 30, the youth have a pivotal role to play in shaping the country's future. They can contribute by participating in civic activities, volunteering for social causes, and innovating in science and technology. Moreover, young people can act as agents of change by promoting social justice, environmental sustainability, and good governance. However, to fulfil this role, they need access to quality education, employment opportunities, and a platform to express their ideas. The government and civil society must work together to empower the youth with skills and resources. When given the opportunity, the youth of Bangladesh can lead the nation towards prosperity and progress.</div>
+                    <div style="font-size:0.85rem;color:#4a3f7a;margin-top:0.2rem;"><strong>Structure:</strong> Topic sentence → importance of youth in Bangladesh → contributions (civic, innovation, change) → needs (education, employment) → call to action → concluding optimism.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">👩 5. Women Empowerment in Bangladesh</div>
+                    <div class="te-model"><strong>Model Answer:</strong> Women empowerment is a crucial factor for the socio-economic development of Bangladesh. Over the past few decades, the country has made remarkable progress in this area, with increased female literacy rates, greater participation in the workforce, and the rise of women in leadership positions. The success of microfinance programs, pioneered by organisations like Grameen Bank, has empowered rural women economically. However, challenges such as gender-based violence, unequal pay, and limited access to higher education continue to hinder full empowerment. To address these issues, the government must enforce laws against gender discrimination, provide scholarship programs for girls, and promote awareness of women's rights. Furthermore, creating a safe and supportive environment for women in workplaces and public spaces is essential. Empowered women are not only vital for family well-being but also for the overall growth of the nation.</div>
+                    <div style="font-size:0.85rem;color:#4a3f7a;margin-top:0.2rem;"><strong>Structure:</strong> Topic sentence → progress (literacy, workforce, microfinance) → challenges (violence, pay, education) → solutions (laws, scholarships, awareness) → concluding statement on national impact.</div>
+                </div>
+            </div>
+            <div class="practice-box" id="practice1">
+                <div class="header">
+                    <h3>🧠 Practice <span>Write your own paragraph</span></h3>
+                    <span class="text-muted" id="qCounter1">Q 1 / ∞</span>
+                </div>
+                <div id="questionContainer1"></div>
+                <div class="actions">
+                    <button class="secondary" onclick="generateQuestion(1)">🔄 Next Topic</button>
+                    <button onclick="checkAnswer(1)">✅ Check Answer</button>
+                    <button onclick="showExplanation(1)">📖 Show Model Answer</button>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <div class="fb-head"><span class="fb-icon">✔</span><span class="fb-msg" id="fbMsg1">Feedback</span></div>
+                    <div class="fb-detail" id="fbDetail1"></div>
+                </div>
+                <div class="score-bar">
+                    <span class="stat">🎯 Score: <span id="score1">0</span>%</span>
+                    <span class="stat">📊 Attempts: <span id="attempts1">0</span></span>
+                    <span class="stat">✅ Correct: <span id="correct1">0</span></span>
+                    <span class="q-counter">⚡ unlimited topics</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- TOPIC 2 — PRÉCIS WRITING (5 passages with model précis)     -->
+        <!-- ========================================================== -->
+        <div class="topic-panel" data-topic="2">
+            <div class="ref-section">
+                <h2>5 Précis Examples <small>with full adherence to all rules</small></h2>
+                <div style="margin-bottom:0.8rem;font-weight:500;color:#2d1f6b;">Each model maintains objectivity, uses own words, preserves order, and is about one‑third length.</div>
+                <div class="topic-example">
+                    <div class="te-title">📄 Passage 1: Globalisation</div>
+                    <div class="te-passage"><strong>Original:</strong> Globalisation is a phenomenon that has transformed the world economy, culture, and politics over the past few decades. It refers to the increasing interconnectedness of nations through trade, investment, migration, and the spread of technology and information. While globalisation has brought economic growth and improved living standards in many developing countries, it has also led to inequality, cultural homogenisation, and the exploitation of cheap labour. Critics argue that globalisation benefits the wealthy at the expense of the poor, and that it undermines local traditions and industries. However, proponents maintain that globalisation, when managed properly, can foster global cooperation and shared prosperity. The key lies in creating policies that ensure the benefits of globalisation are distributed more equitably.</div>
+                    <div class="te-model"><strong>Précis:</strong> The author discusses globalisation as a transformative force that has increased global interconnectedness, bringing both economic benefits and social challenges. While it has spurred growth and raised living standards in developing nations, it has also intensified inequality, cultural erosion, and labour exploitation. Critics view it as favouring the wealthy, whereas supporters believe it can promote cooperation if policies ensure fair distribution of benefits.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">📄 Passage 2: Education in Bangladesh</div>
+                    <div class="te-passage"><strong>Original:</strong> Education is the foundation upon which a nation builds its future. It is not merely about acquiring knowledge but also about developing critical thinking, creativity, and moral values. In Bangladesh, education has been a priority for the government, with significant investments in primary and secondary schooling. Yet, the quality of education remains a concern, as many students graduate without the necessary skills for the job market. The curriculum often emphasises rote memorisation rather than practical application and innovation. To address these shortcomings, education reformers call for a paradigm shift towards student-centred learning, vocational training, and the integration of technology in classrooms. Only then can education truly empower the next generation.</div>
+                    <div class="te-model"><strong>Précis:</strong> The author asserts that education is fundamental to national development, extending beyond knowledge acquisition to include critical thinking and values. Despite government investment in Bangladesh's education system, quality issues persist, with graduates lacking job-ready skills and curricula favouring memorisation over innovation. Reformers advocate for a shift to student-centred learning, vocational training, and technology integration to empower future generations.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">📄 Passage 3: Artificial Intelligence</div>
+                    <div class="te-passage"><strong>Original:</strong> The rapid advancement of artificial intelligence (AI) is reshaping industries, economies, and the nature of work itself. AI technologies, from machine learning to natural language processing, are automating tasks that were once thought to require human intelligence. This has led to concerns about massive job displacement, particularly in sectors such as manufacturing, transportation, and customer service. However, AI also creates new opportunities by generating demand for AI specialists, data analysts, and other tech-related roles. Moreover, AI can enhance human productivity by taking over repetitive tasks, allowing workers to focus on creative and strategic activities. The challenge, therefore, is to manage the transition through reskilling and upskilling programs, ensuring that the workforce is prepared for the AI-driven economy.</div>
+                    <div class="te-model"><strong>Précis:</strong> The author examines how AI is transforming industries and work, with automation threatening jobs in manufacturing and services while creating new tech roles. Although AI boosts productivity by handling repetitive tasks, it requires workers to focus on creative and strategic work. The key challenge is to facilitate this transition through reskilling initiatives to prepare the workforce for an AI-driven economy.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">📄 Passage 4: Sustainable Development</div>
+                    <div class="te-passage"><strong>Original:</strong> Sustainable development has emerged as a guiding principle for nations seeking to balance economic growth with environmental protection and social equity. The concept, popularised by the Brundtland Commission, defines sustainable development as "development that meets the needs of the present without compromising the ability of future generations to meet their own needs." In practice, this means adopting renewable energy, reducing carbon emissions, conserving natural resources, and promoting inclusive growth. For developing countries like Bangladesh, sustainable development is both a necessity and a challenge. While industrialisation is essential for poverty reduction, it must be pursued in an environmentally responsible manner. International cooperation and technology transfer are crucial for helping developing nations achieve their sustainable development goals.</div>
+                    <div class="te-model"><strong>Précis:</strong> The author discusses sustainable development as a framework for balancing economic growth, environmental protection, and social equity, defined as meeting present needs without compromising future generations. It requires renewable energy, emission reduction, resource conservation, and inclusive growth. For developing nations like Bangladesh, it is both necessary and challenging, requiring responsible industrialisation and international cooperation with technology transfer.</div>
+                </div>
+                <div class="topic-example">
+                    <div class="te-title">📄 Passage 5: Mental Health</div>
+                    <div class="te-passage"><strong>Original:</strong> Mental health is an integral component of overall well-being, yet it has long been neglected in healthcare systems worldwide. The stigma associated with mental illness often prevents individuals from seeking help, leading to untreated conditions and severe consequences. In Bangladesh, mental health services are scarce, with only a handful of psychiatrists and mental health facilities for a population of over 160 million. Moreover, cultural beliefs and lack of awareness contribute to the marginalisation of those suffering from mental health issues. To address this crisis, the government must prioritise mental health in public health policies, integrate mental health services into primary healthcare, and conduct awareness campaigns to reduce stigma. Furthermore, community-based support networks can play a vital role in providing care and support to those in need.</div>
+                    <div class="te-model"><strong>Précis:</strong> The author argues that mental health, despite being crucial to well-being, has been neglected in healthcare, with stigma preventing help-seeking. In Bangladesh, the scarcity of mental health resources and cultural attitudes exacerbate the problem. To address this, the government must prioritise mental health in policies, integrate services into primary care, run awareness campaigns, and leverage community support networks.</div>
+                </div>
+            </div>
+            <div class="practice-box" id="practice2">
+                <div class="header">
+                    <h3>🧠 Practice <span>Write your own précis</span></h3>
+                    <span class="text-muted" id="qCounter2">Q 1 / ∞</span>
+                </div>
+                <div id="questionContainer2"></div>
+                <div class="actions">
+                    <button class="secondary" onclick="generateQuestion(2)">🔄 Next Passage</button>
+                    <button onclick="checkAnswer(2)">✅ Check Answer</button>
+                    <button onclick="showExplanation(2)">📖 Show Model Précis</button>
+                </div>
+                <div class="feedback" id="feedback2">
+                    <div class="fb-head"><span class="fb-icon">✔</span><span class="fb-msg" id="fbMsg2">Feedback</span></div>
+                    <div class="fb-detail" id="fbDetail2"></div>
+                </div>
+                <div class="score-bar">
+                    <span class="stat">🎯 Score: <span id="score2">0</span>%</span>
+                    <span class="stat">📊 Attempts: <span id="attempts2">0</span></span>
+                    <span class="stat">✅ Correct: <span id="correct2">0</span></span>
+                    <span class="q-counter">⚡ unlimited passages</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- TOPIC 3 — RIGHT FORM OF VERBS                               -->
+        <!-- ========================================================== -->
+        <div class="topic-panel" data-topic="3">
+            <div class="ref-section">
+                <h2>All Rules <small>Right Form of Verbs</small></h2>
+                <div class="rule-list">
+                    <div class="rule-item"><strong>1.</strong> Singular subjects take singular verbs (add -s/-es).</div>
+                    <div class="rule-item"><strong>2.</strong> Plural subjects take plural verbs (base form).</div>
+                    <div class="rule-item"><strong>3.</strong> Use <em>am/is/are</em> for present continuous; <em>was/were</em> for past continuous.</div>
+                    <div class="rule-item"><strong>4.</strong> Present perfect: <em>has/have</em> + past participle.</div>
+                    <div class="rule-item"><strong>5.</strong> Past perfect: <em>had</em> + past participle.</div>
+                    <div class="rule-item"><strong>6.</strong> Future perfect: <em>will have</em> + past participle.</div>
+                    <div class="rule-item"><strong>7.</strong> Subjunctive: use base form after verbs like <em>suggest, recommend</em>.</div>
+                    <div class="rule-item"><strong>8.</strong> Second conditional: <em>if + past, would + base</em> (use <em>were</em> for all).</div>
+                    <div class="rule-item"><strong>9.</strong> Gerund: verb + -ing after <em>enjoy, avoid, consider</em>.</div>
+                    <div class="rule-item"><strong>10.</strong> Passive voice: <em>be</em> + past participle.</div>
+                </div>
+                <div class="example-box">❝ If she <em>had studied</em> harder, she <em>would have passed</em> the exam. (third conditional) ❞</div>
+            </div>
+            <div class="practice-box" id="practice3">
+                <div class="header">
+                    <h3>🧠 Practice <span>MCQ + Written</span></h3>
+                    <span class="text-muted" id="qCounter3">Q 1 / ∞</span>
+                </div>
+                <div id="questionContainer3"></div>
+                <div class="actions">
+                    <button class="secondary" onclick="generateQuestion(3)">🔄 Next Question</button>
+                    <button onclick="checkAnswer(3)">✅ Check Answer</button>
+                    <button onclick="showExplanation(3)">📖 Show Explanation</button>
+                </div>
+                <div class="feedback" id="feedback3">
+                    <div class="fb-head"><span class="fb-icon">✔</span><span class="fb-msg" id="fbMsg3">Feedback</span></div>
+                    <div class="fb-detail" id="fbDetail3"></div>
+                </div>
+                <div class="score-bar">
+                    <span class="stat">🎯 Score: <span id="score3">0</span>%</span>
+                    <span class="stat">📊 Attempts: <span id="attempts3">0</span></span>
+                    <span class="stat">✅ Correct: <span id="correct3">0</span></span>
+                    <span class="q-counter">⚡ unlimited questions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- TOPIC 4 — PREPOSITION                                       -->
+        <!-- ========================================================== -->
+        <div class="topic-panel" data-topic="4">
+            <div class="ref-section">
+                <h2>All Rules <small>Preposition</small></h2>
+                <div class="rule-list">
+                    <div class="rule-item"><strong>1. Time:</strong> <em>at</em> (specific time), <em>in</em> (months/years), <em>on</em> (days/dates).</div>
+                    <div class="rule-item"><strong>2. Place:</strong> <em>in</em> (enclosed), <em>on</em> (surface), <em>at</em> (specific point).</div>
+                    <div class="rule-item"><strong>3. Duration:</strong> <em>for</em> (length), <em>since</em> (starting point).</div>
+                    <div class="rule-item"><strong>4. Dependent:</strong> <em>interested in</em>, <em>afraid of</em>, <em>good at</em>, <em>depend on</em>.</div>
+                    <div class="rule-item"><strong>5. Between vs. Among:</strong> <em>between</em> (two), <em>among</em> (more than two).</div>
+                    <div class="rule-item"><strong>6. Beside vs. Besides:</strong> <em>beside</em> (next to), <em>besides</em> (in addition).</div>
+                    <div class="rule-item"><strong>7. Due to vs. Because of:</strong> <em>due to</em> (adjectival), <em>because of</em> (adverbial).</div>
+                    <div class="rule-item"><strong>8. Complex:</strong> <em>in spite of</em>, <em>on account of</em>, <em>with regard to</em>.</div>
+                </div>
+                <div class="example-box">❝ She is <em>interested in</em> linguistics, but she is <em>afraid of</em> phonetics. ❞</div>
+            </div>
+            <div class="practice-box" id="practice4">
+                <div class="header">
+                    <h3>🧠 Practice <span>MCQ + Written</span></h3>
+                    <span class="text-muted" id="qCounter4">Q 1 / ∞</span>
+                </div>
+                <div id="questionContainer4"></div>
+                <div class="actions">
+                    <button class="secondary" onclick="generateQuestion(4)">🔄 Next Question</button>
+                    <button onclick="checkAnswer(4)">✅ Check Answer</button>
+                    <button onclick="showExplanation(4)">📖 Show Explanation</button>
+                </div>
+                <div class="feedback" id="feedback4">
+                    <div class="fb-head"><span class="fb-icon">✔</span><span class="fb-msg" id="fbMsg4">Feedback</span></div>
+                    <div class="fb-detail" id="fbDetail4"></div>
+                </div>
+                <div class="score-bar">
+                    <span class="stat">🎯 Score: <span id="score4">0</span>%</span>
+                    <span class="stat">📊 Attempts: <span id="attempts4">0</span></span>
+                    <span class="stat">✅ Correct: <span id="correct4">0</span></span>
+                    <span class="q-counter">⚡ unlimited questions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== -->
+        <!-- TOPIC 5 — PHONETICS & PHONOLOGY                             -->
+        <!-- ========================================================== -->
+        <div class="topic-panel" data-topic="5">
+            <div class="ref-section">
+                <h2>All Rules <small>Phonetics &amp; Phonology</small></h2>
+                <div class="rule-list">
+                    <div class="rule-item"><strong>1.</strong> Phonetics: study of physical speech sounds.</div>
+                    <div class="rule-item"><strong>2.</strong> Phonology: study of how sounds function in a language.</div>
+                    <div class="rule-item"><strong>3.</strong> IPA: International Phonetic Alphabet — standard symbol system.</div>
+                    <div class="rule-item"><strong>4.</strong> Phonemes: distinctive sound units (English ~44).</div>
+                    <div class="rule-item"><strong>5.</strong> Allophones: variants of a phoneme that do not change meaning.</div>
+                    <div class="rule-item"><strong>6.</strong> Minimal Pairs: words differing by one sound (<em>ship</em> vs. <em>sheep</em>).</div>
+                    <div class="rule-item"><strong>7.</strong> Syllable: vowel nucleus + optional consonants (onset, nucleus, coda).</div>
+                    <div class="rule-item"><strong>8.</strong> Intonation: rise and fall of pitch (conveys attitude, sentence type).</div>
+                    <div class="rule-item"><strong>9.</strong> Assimilation: sound changes to become like a neighbour.</div>
+                    <div class="rule-item"><strong>10.</strong> Schwa (/ə/): most common vowel sound in unstressed syllables.</div>
+                </div>
+                <div class="example-box">❝ Minimal pair: <em>pin</em> /pɪn/ vs. <em>pen</em> /pɛn/ — the vowel changes the meaning. ❞</div>
+            </div>
+            <div class="practice-box" id="practice5">
+                <div class="header">
+                    <h3>🧠 Practice <span>MCQ + Written</span></h3>
+                    <span class="text-muted" id="qCounter5">Q 1 / ∞</span>
+                </div>
+                <div id="questionContainer5"></div>
+                <div class="actions">
+                    <button class="secondary" onclick="generateQuestion(5)">🔄 Next Question</button>
+                    <button onclick="checkAnswer(5)">✅ Check Answer</button>
+                    <button onclick="showExplanation(5)">📖 Show Explanation</button>
+                </div>
+                <div class="feedback" id="feedback5">
+                    <div class="fb-head"><span class="fb-icon">✔</span><span class="fb-msg" id="fbMsg5">Feedback</span></div>
+                    <div class="fb-detail" id="fbDetail5"></div>
+                </div>
+                <div class="score-bar">
+                    <span class="stat">🎯 Score: <span id="score5">0</span>%</span>
+                    <span class="stat">📊 Attempts: <span id="attempts5">0</span></span>
+                    <span class="stat">✅ Correct: <span id="correct5">0</span></span>
+                    <span class="q-counter">⚡ unlimited questions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div style="margin-top:2.5rem;border-top:2px solid #ede9f0;padding-top:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;font-size:0.85rem;color:#6b6b80;">
+            <span>🧑‍🏫 PhD English Lab · HSTU Level 1 Semester 1</span>
+            <span>⚡ All rules &amp; examples maintained · unlimited practice</span>
+        </div>
+    </div>
+
+    <script>
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  QUESTION BANK — same as before, but now only used for practice
+        //  The reference content is in the HTML itself.
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        const QUESTION_BANK = {
+            0: { // Capitalization & Punctuation
+                name: 'Capitalization & Punctuation',
+                questions: [{
+                    type: 'mcq',
+                    question: 'Which sentence uses correct capitalization and punctuation?',
+                    options: [
+                        'A. "i love reading books." said the teacher.',
+                        'B. "I love reading books," said the teacher.',
+                        'C. "I love reading books." said the Teacher.',
+                        'D. "i love reading books," said the Teacher.'
+                    ],
+                    answer: 'B',
+                    explanation: 'Option B is correct: "I" is capitalised, the comma is used before the closing quotation mark, and "teacher" is not capitalised as a common noun.'
+                }, {
+                    type: 'mcq',
+                    question: 'Choose the correctly punctuated sentence:',
+                    options: [
+                        'A. The CEO of Apple Inc. announced a new product.',
+                        'B. The CEO of Apple Inc announced a new product.',
+                        'C. The C.E.O. of Apple Inc. announced a new product.',
+                        'D. The CEO of Apple inc. announced a new product.'
+                    ],
+                    answer: 'A',
+                    explanation: 'Option A is correct: "CEO" is an acronym, "Inc." requires a period, and "Apple" is a proper noun.'
+                }, {
+                    type: 'mcq',
+                    question: 'Which sentence has correct punctuation?',
+                    options: [
+                        'A. She said, "I will be there by 5 pm."',
+                        'B. She said "I will be there by 5 pm".',
+                        'C. She said, "I will be there by 5 p.m."',
+                        'D. She said, "I will be there by 5 p.m".'
+                    ],
+                    answer: 'C',
+                    explanation: 'Option C is correct: a comma after "said", quotation marks, "p.m." with periods, and the period inside the quotation marks.'
+                }, {
+                    type: 'mcq',
+                    question: 'Identify the correctly capitalised sentence:',
+                    options: [
+                        'A. The professor said, "the exam is on Monday."',
+                        'B. The Professor said, "The exam is on Monday."',
+                        'C. The professor said, "The exam is on Monday."',
+                        'D. The professor said, "The exam is on monday."'
+                    ],
+                    answer: 'C',
+                    explanation: 'Option C is correct: "professor" is a common noun (lowercase), the first word inside quotes is capitalised, and "Monday" is a proper noun.'
+                }, {
+                    type: 'mcq',
+                    question: 'Which sentence uses the Oxford comma correctly?',
+                    options: [
+                        'A. I like apples, oranges and bananas.',
+                        'B. I like apples, oranges, and bananas.',
+                        'C. I like apples oranges and bananas.',
+                        'D. I like apples, oranges, and, bananas.'
+                    ],
+                    answer: 'B',
+                    explanation: 'Option B uses the Oxford comma (comma before "and" in a list of three or more items).'
+                }, {
+                    type: 'mcq',
+                    question: 'Choose the sentence with correct apostrophe usage:',
+                    options: [
+                        'A. Its a beautiful day outside.',
+                        'B. It\'s a beautiful day outside.',
+                        'C. Its\' a beautiful day outside.',
+                        'D. It\'s a beautiful day outside?'
+                    ],
+                    answer: 'B',
+                    explanation: 'Option B is correct: "It\'s" is a contraction of "it is". A uses "Its" (possessive) incorrectly.'
+                }, {
+                    type: 'mcq',
+                    question: 'Which sentence has correct semicolon usage?',
+                    options: [
+                        'A. I have a big test tomorrow; I can\'t go out tonight.',
+                        'B. I have a big test tomorrow, I can\'t go out tonight.',
+                        'C. I have a big test tomorrow; I can\'t go out tonight?',
+                        'D. I have a big test tomorrow: I can\'t go out tonight.'
+                    ],
+                    answer: 'A',
+                    explanation: 'Option A uses a semicolon correctly to join two closely related independent clauses.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation and capitalization: "the teacher said the exam will be on friday"',
+                    answer: 'The teacher said the exam will be on Friday.',
+                    explanation: 'Capitalise the first word "The", capitalise the proper noun "Friday", and add a period at the end.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "she asked where are you going"',
+                    answer: 'She asked, "Where are you going?"',
+                    explanation: 'Capitalise "She", add a comma after "asked", capitalise "Where", use quotation marks, and add a question mark inside the quotes.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "my favorite colors are red blue and green"',
+                    answer: 'My favorite colors are red, blue, and green.',
+                    explanation: 'Capitalise "My", add commas between list items, and use the Oxford comma before "and". Add a period at the end.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "dont forget to bring your notebook pencil and eraser"',
+                    answer: 'Don\'t forget to bring your notebook, pencil, and eraser.',
+                    explanation: 'Capitalise "Don\'t", add an apostrophe, use commas between list items, and add a period at the end.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "the book which was written by jk rowling became a bestseller"',
+                    answer: 'The book, which was written by J.K. Rowling, became a bestseller.',
+                    explanation: 'Capitalise "The", add commas around the non-essential clause, and capitalise the proper name "J.K. Rowling" with periods.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "he said i will be there by 5 pm"',
+                    answer: 'He said, "I will be there by 5 p.m."',
+                    explanation: 'Capitalise "He", add a comma after "said", capitalise "I", use quotation marks, and write "p.m." with periods inside the quotes.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "after the rain stopped we went outside to play"',
+                    answer: 'After the rain stopped, we went outside to play.',
+                    explanation: 'Capitalise "After", add a comma after the dependent clause "After the rain stopped", and add a period at the end.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the punctuation: "the ceo of apple inc announced a new product"',
+                    answer: 'The CEO of Apple Inc. announced a new product.',
+                    explanation: 'Capitalise "The", write "CEO" in uppercase, capitalise "Apple", add a period after "Inc" (abbreviation), and add a period at the end.'
+                }]
+            },
+            1: { // Paragraph — practice uses the same 5 topics as reference
+                name: 'Paragraph Writing (HSTU)',
+                questions: [{
+                    type: 'written',
+                    topic: 'Climate Change and Its Impact on Bangladesh',
+                    question: 'Write a well-structured paragraph on "Climate Change and Its Impact on Bangladesh" (approx. 150 words).',
+                    answer: 'Climate change is one of the most critical challenges facing Bangladesh today. Rising global temperatures have led to increased melting of polar ice, causing sea levels to rise and threatening the coastal regions of Bangladesh with frequent floods and cyclones. Additionally, erratic rainfall patterns have disrupted agricultural cycles, leading to food insecurity and loss of livelihoods for millions of farmers. The Sundarbans, the world\'s largest mangrove forest, is also at risk due to saline water intrusion. To mitigate these impacts, the government must invest in climate-resilient infrastructure, promote renewable energy, and raise public awareness about environmental conservation. Without immediate action, climate change will continue to endanger the lives and well-being of the people of Bangladesh.',
+                    explanation: 'This is a university-level paragraph with a clear topic sentence, supporting evidence, and a concluding sentence. It uses transitional words and maintains coherence throughout.'
+                }, {
+                    type: 'written',
+                    topic: 'Digital Bangladesh: Prospects and Challenges',
+                    question: 'Write a well-structured paragraph on "Digital Bangladesh: Prospects and Challenges" (approx. 150 words).',
+                    answer: 'The vision of "Digital Bangladesh" aims to transform the country into a technologically advanced nation by 2021. The prospects are immense: e-governance can reduce corruption, digital education can reach remote areas, and e-commerce can boost the economy. However, significant challenges remain. The digital divide between urban and rural areas hampers equal access to technology. Cybersecurity threats, inadequate infrastructure, and a lack of skilled IT professionals also pose serious obstacles. Moreover, the high cost of internet and devices excludes many low-income citizens from the digital revolution. To overcome these challenges, the government must invest in broadband infrastructure, provide affordable devices, and train a skilled workforce. Only then can Bangladesh fully realise the benefits of digitalisation.',
+                    explanation: 'This paragraph presents a balanced view of Digital Bangladesh, discussing both prospects and challenges with clear supporting details.'
+                }, {
+                    type: 'written',
+                    topic: 'Higher Education in Bangladesh: Problems and Solutions',
+                    question: 'Write a well-structured paragraph on "Higher Education in Bangladesh: Problems and Solutions" (approx. 150 words).',
+                    answer: 'Higher education in Bangladesh faces several critical problems that hinder its quality and relevance. Firstly, the curriculum is often outdated and fails to meet the demands of the modern job market. Secondly, there is a severe shortage of qualified and experienced faculty members, compounded by inadequate research facilities and funding. Additionally, the prevalence of rote learning rather than critical thinking stifles intellectual growth. To address these issues, the government should revise the curriculum to align with industry needs and invest in faculty development programs. Universities should encourage research, provide modern laboratories, and promote collaboration with international institutions. Furthermore, a shift from traditional examinations to continuous assessment would foster deeper learning. With these reforms, higher education in Bangladesh can produce skilled graduates capable of contributing to national development.',
+                    explanation: 'This paragraph uses a problem-solution structure with clear topic sentences and supporting evidence for each point.'
+                }, {
+                    type: 'written',
+                    topic: 'The Role of Youth in Nation Building',
+                    question: 'Write a well-structured paragraph on "The Role of Youth in Nation Building" (approx. 150 words).',
+                    answer: 'The youth of a nation are its most valuable asset, possessing the energy, creativity, and idealism necessary for nation building. In Bangladesh, where more than 60% of the population is under 30, the youth have a pivotal role to play in shaping the country\'s future. They can contribute by participating in civic activities, volunteering for social causes, and innovating in science and technology. Moreover, young people can act as agents of change by promoting social justice, environmental sustainability, and good governance. However, to fulfil this role, they need access to quality education, employment opportunities, and a platform to express their ideas. The government and civil society must work together to empower the youth with skills and resources. When given the opportunity, the youth of Bangladesh can lead the nation towards prosperity and progress.',
+                    explanation: 'This paragraph highlights the importance of youth in nation building, using persuasive language and logical development.'
+                }, {
+                    type: 'written',
+                    topic: 'Women Empowerment in Bangladesh',
+                    question: 'Write a well-structured paragraph on "Women Empowerment in Bangladesh" (approx. 150 words).',
+                    answer: 'Women empowerment is a crucial factor for the socio-economic development of Bangladesh. Over the past few decades, the country has made remarkable progress in this area, with increased female literacy rates, greater participation in the workforce, and the rise of women in leadership positions. The success of microfinance programs, pioneered by organisations like Grameen Bank, has empowered rural women economically. However, challenges such as gender-based violence, unequal pay, and limited access to higher education continue to hinder full empowerment. To address these issues, the government must enforce laws against gender discrimination, provide scholarship programs for girls, and promote awareness of women\'s rights. Furthermore, creating a safe and supportive environment for women in workplaces and public spaces is essential. Empowered women are not only vital for family well-being but also for the overall growth of the nation.',
+                    explanation: 'This paragraph acknowledges progress while addressing ongoing challenges, with a clear call to action and a strong concluding sentence.'
+                }]
+            },
+            2: { // Précis — practice uses the same 5 passages
+                name: 'Précis Writing',
+                questions: [{
+                    type: 'precis',
+                    passage: 'Globalisation is a phenomenon that has transformed the world economy, culture, and politics over the past few decades. It refers to the increasing interconnectedness of nations through trade, investment, migration, and the spread of technology and information. While globalisation has brought economic growth and improved living standards in many developing countries, it has also led to inequality, cultural homogenisation, and the exploitation of cheap labour. Critics argue that globalisation benefits the wealthy at the expense of the poor, and that it undermines local traditions and industries. However, proponents maintain that globalisation, when managed properly, can foster global cooperation and shared prosperity. The key lies in creating policies that ensure the benefits of globalisation are distributed more equitably.',
+                    answer: 'The author discusses globalisation as a transformative force that has increased global interconnectedness, bringing both economic benefits and social challenges. While it has spurred growth and raised living standards in developing nations, it has also intensified inequality, cultural erosion, and labour exploitation. Critics view it as favouring the wealthy, whereas supporters believe it can promote cooperation if policies ensure fair distribution of benefits.',
+                    explanation: 'This précis captures the main argument, the pros and cons, and the author\'s stance in a concise, objective manner. It uses the writer\'s own words and maintains the original structure.'
+                }, {
+                    type: 'precis',
+                    passage: 'Education is the foundation upon which a nation builds its future. It is not merely about acquiring knowledge but also about developing critical thinking, creativity, and moral values. In Bangladesh, education has been a priority for the government, with significant investments in primary and secondary schooling. Yet, the quality of education remains a concern, as many students graduate without the necessary skills for the job market. The curriculum often emphasises rote memorisation rather than practical application and innovation. To address these shortcomings, education reformers call for a paradigm shift towards student-centred learning, vocational training, and the integration of technology in classrooms. Only then can education truly empower the next generation.',
+                    answer: 'The author asserts that education is fundamental to national development, extending beyond knowledge acquisition to include critical thinking and values. Despite government investment in Bangladesh\'s education system, quality issues persist, with graduates lacking job-ready skills and curricula favouring memorisation over innovation. Reformers advocate for a shift to student-centred learning, vocational training, and technology integration to empower future generations.',
+                    explanation: 'This précis maintains objectivity, uses paraphrasing, and preserves the logical flow of the original passage.'
+                }, {
+                    type: 'precis',
+                    passage: 'The rapid advancement of artificial intelligence (AI) is reshaping industries, economies, and the nature of work itself. AI technologies, from machine learning to natural language processing, are automating tasks that were once thought to require human intelligence. This has led to concerns about massive job displacement, particularly in sectors such as manufacturing, transportation, and customer service. However, AI also creates new opportunities by generating demand for AI specialists, data analysts, and other tech-related roles. Moreover, AI can enhance human productivity by taking over repetitive tasks, allowing workers to focus on creative and strategic activities. The challenge, therefore, is to manage the transition through reskilling and upskilling programs, ensuring that the workforce is prepared for the AI-driven economy.',
+                    answer: 'The author examines how AI is transforming industries and work, with automation threatening jobs in manufacturing and services while creating new tech roles. Although AI boosts productivity by handling repetitive tasks, it requires workers to focus on creative and strategic work. The key challenge is to facilitate this transition through reskilling initiatives to prepare the workforce for an AI-driven economy.',
+                    explanation: 'This précis clearly states the main argument, acknowledges both challenges and opportunities, and concludes with the author\'s implied solution.'
+                }, {
+                    type: 'precis',
+                    passage: 'Sustainable development has emerged as a guiding principle for nations seeking to balance economic growth with environmental protection and social equity. The concept, popularised by the Brundtland Commission, defines sustainable development as "development that meets the needs of the present without compromising the ability of future generations to meet their own needs." In practice, this means adopting renewable energy, reducing carbon emissions, conserving natural resources, and promoting inclusive growth. For developing countries like Bangladesh, sustainable development is both a necessity and a challenge. While industrialisation is essential for poverty reduction, it must be pursued in an environmentally responsible manner. International cooperation and technology transfer are crucial for helping developing nations achieve their sustainable development goals.',
+                    answer: 'The author discusses sustainable development as a framework for balancing economic growth, environmental protection, and social equity, defined as meeting present needs without compromising future generations. It requires renewable energy, emission reduction, resource conservation, and inclusive growth. For developing nations like Bangladesh, it is both necessary and challenging, requiring responsible industrialisation and international cooperation with technology transfer.',
+                    explanation: 'This précis captures the definition, the practical implications, and the specific challenges for developing countries in a concise, structured manner.'
+                }, {
+                    type: 'precis',
+                    passage: 'Mental health is an integral component of overall well-being, yet it has long been neglected in healthcare systems worldwide. The stigma associated with mental illness often prevents individuals from seeking help, leading to untreated conditions and severe consequences. In Bangladesh, mental health services are scarce, with only a handful of psychiatrists and mental health facilities for a population of over 160 million. Moreover, cultural beliefs and lack of awareness contribute to the marginalisation of those suffering from mental health issues. To address this crisis, the government must prioritise mental health in public health policies, integrate mental health services into primary healthcare, and conduct awareness campaigns to reduce stigma. Furthermore, community-based support networks can play a vital role in providing care and support to those in need.',
+                    answer: 'The author argues that mental health, despite being crucial to well-being, has been neglected in healthcare, with stigma preventing help-seeking. In Bangladesh, the scarcity of mental health resources and cultural attitudes exacerbate the problem. To address this, the government must prioritise mental health in policies, integrate services into primary care, run awareness campaigns, and leverage community support networks.',
+                    explanation: 'This précis maintains objectivity, uses paraphrasing, and preserves the author\'s argument structure with a clear call to action.'
+                }]
+            },
+            3: { // Right Form of Verbs
+                name: 'Right Form of Verbs',
+                questions: [{
+                    type: 'mcq',
+                    question: 'She ___ (go) to school every day.',
+                    options: ['A. go', 'B. goes', 'C. going', 'D. gone'],
+                    answer: 'B',
+                    explanation: 'The correct form is "goes" because the subject "She" is third person singular, so the verb takes an -s ending in the present tense.'
+                }, {
+                    type: 'mcq',
+                    question: 'They ___ (play) football when it started to rain.',
+                    options: ['A. play', 'B. played', 'C. were playing', 'D. had played'],
+                    answer: 'C',
+                    explanation: '"Were playing" is the past continuous tense, used for an action that was in progress when another action (started to rain) interrupted it.'
+                }, {
+                    type: 'mcq',
+                    question: 'If I ___ (be) rich, I would travel the world.',
+                    options: ['A. am', 'B. was', 'C. were', 'D. had been'],
+                    answer: 'C',
+                    explanation: '"Were" is the subjunctive form used in hypothetical conditional sentences (second conditional).'
+                }, {
+                    type: 'mcq',
+                    question: 'He ___ (finish) his homework before dinner.',
+                    options: ['A. finishes', 'B. finished', 'C. had finished', 'D. has finished'],
+                    answer: 'C',
+                    explanation: '"Had finished" is the past perfect tense, used to show that one past action was completed before another past action.'
+                }, {
+                    type: 'mcq',
+                    question: 'I ___ (see) that movie three times.',
+                    options: ['A. see', 'B. saw', 'C. have seen', 'D. had seen'],
+                    answer: 'C',
+                    explanation: '"Have seen" is the present perfect tense, used for a repeated action that has occurred up to the present.'
+                }, {
+                    type: 'mcq',
+                    question: 'She ___ (not / like) spicy food.',
+                    options: ['A. not like', 'B. does not like', 'C. do not like', 'D. is not liking'],
+                    answer: 'B',
+                    explanation: '"Does not like" is the correct negative present tense form for third person singular.'
+                }, {
+                    type: 'mcq',
+                    question: 'By next year, I ___ (work) here for ten years.',
+                    options: ['A. work', 'B. will work', 'C. will have worked', 'D. have worked'],
+                    answer: 'C',
+                    explanation: '"Will have worked" is the future perfect tense, used for an action that will be completed by a specific time in the future.'
+                }, {
+                    type: 'mcq',
+                    question: 'He suggested that she ___ (study) harder.',
+                    options: ['A. studies', 'B. study', 'C. studied', 'D. had studied'],
+                    answer: 'B',
+                    explanation: '"Study" is the subjunctive form used after verbs like "suggest", "recommend", "insist".'
+                }, {
+                    type: 'mcq',
+                    question: 'The cake ___ (bake) by my grandmother.',
+                    options: ['A. bake', 'B. bakes', 'C. was baked', 'D. has baked'],
+                    answer: 'C',
+                    explanation: '"Was baked" is the passive voice in the past tense. The subject (cake) receives the action.'
+                }, {
+                    type: 'mcq',
+                    question: 'I enjoy ___ (read) mystery novels.',
+                    options: ['A. read', 'B. to read', 'C. reading', 'D. reads'],
+                    answer: 'C',
+                    explanation: '"Reading" is a gerund used after the verb "enjoy". Gerunds are used after verbs like "enjoy", "avoid", "consider".'
+                }, {
+                    type: 'written',
+                    question: 'Correct the verb form: "She go to school every day."',
+                    answer: 'She goes to school every day.',
+                    explanation: 'The verb must agree with the third person singular subject "She", so "go" becomes "goes".'
+                }, {
+                    type: 'written',
+                    question: 'Correct the verb form: "They was playing football when it started to rain."',
+                    answer: 'They were playing football when it started to rain.',
+                    explanation: '"They" is plural, so the past continuous form is "were playing", not "was playing".'
+                }, {
+                    type: 'written',
+                    question: 'Correct the verb form: "If I was rich, I would travel the world."',
+                    answer: 'If I were rich, I would travel the world.',
+                    explanation: 'In subjunctive mood (second conditional), "were" is used for all subjects, including "I".'
+                }, {
+                    type: 'written',
+                    question: 'Correct the verb form: "He has finish his homework before dinner."',
+                    answer: 'He had finished his homework before dinner.',
+                    explanation: 'The past perfect "had finished" is needed to show that the homework was completed before dinner.'
+                }, {
+                    type: 'written',
+                    question: 'Correct the verb form: "I have saw that movie three times."',
+                    answer: 'I have seen that movie three times.',
+                    explanation: 'The present perfect uses the past participle "seen", not the simple past "saw".'
+                }]
+            },
+            4: { // Preposition
+                name: 'Preposition',
+                questions: [{
+                    type: 'mcq',
+                    question: 'She is interested ___ linguistics.',
+                    options: ['A. on', 'B. in', 'C. at', 'D. about'],
+                    answer: 'B',
+                    explanation: '"Interested in" is the correct dependent preposition.'
+                }, {
+                    type: 'mcq',
+                    question: 'He is afraid ___ spiders.',
+                    options: ['A. from', 'B. of', 'C. with', 'D. at'],
+                    answer: 'B',
+                    explanation: '"Afraid of" is the correct dependent preposition.'
+                }, {
+                    type: 'mcq',
+                    question: 'We arrived ___ the airport at 6 p.m.',
+                    options: ['A. in', 'B. on', 'C. at', 'D. to'],
+                    answer: 'C',
+                    explanation: '"At" is used for specific points or locations (airport, station, etc.).'
+                }, {
+                    type: 'mcq',
+                    question: 'I will meet you ___ Friday.',
+                    options: ['A. in', 'B. on', 'C. at', 'D. by'],
+                    answer: 'B',
+                    explanation: '"On" is used with days of the week.'
+                }, {
+                    type: 'mcq',
+                    question: 'She has been waiting ___ 20 minutes.',
+                    options: ['A. since', 'B. for', 'C. from', 'D. until'],
+                    answer: 'B',
+                    explanation: '"For" is used to indicate a duration of time.'
+                }, {
+                    type: 'mcq',
+                    question: 'He is famous ___ his paintings.',
+                    options: ['A. for', 'B. of', 'C. with', 'D. by'],
+                    answer: 'A',
+                    explanation: '"Famous for" is the correct dependent preposition.'
+                }, {
+                    type: 'mcq',
+                    question: 'They are worried ___ the exam.',
+                    options: ['A. for', 'B. about', 'C. of', 'D. with'],
+                    answer: 'B',
+                    explanation: '"Worried about" is the correct dependent preposition.'
+                }, {
+                    type: 'mcq',
+                    question: 'The book is ___ the table.',
+                    options: ['A. in', 'B. on', 'C. at', 'D. over'],
+                    answer: 'B',
+                    explanation: '"On" is used for surfaces.'
+                }, {
+                    type: 'mcq',
+                    question: 'She is good ___ mathematics.',
+                    options: ['A. in', 'B. at', 'C. on', 'D. for'],
+                    answer: 'B',
+                    explanation: '"Good at" is the correct dependent preposition for skills and abilities.'
+                }, {
+                    type: 'mcq',
+                    question: 'He insisted ___ paying the bill.',
+                    options: ['A. on', 'B. at', 'C. in', 'D. for'],
+                    answer: 'A',
+                    explanation: '"Insisted on" is the correct dependent preposition.'
+                }, {
+                    type: 'written',
+                    question: 'Fill in the blank: "She is interested ___ linguistics."',
+                    answer: 'in',
+                    explanation: '"Interested in" is the correct prepositional phrase.'
+                }, {
+                    type: 'written',
+                    question: 'Fill in the blank: "He is afraid ___ spiders."',
+                    answer: 'of',
+                    explanation: '"Afraid of" is the correct prepositional phrase.'
+                }, {
+                    type: 'written',
+                    question: 'Fill in the blank: "We arrived ___ the airport at 6 p.m."',
+                    answer: 'at',
+                    explanation: '"At" is used for specific locations like airports, stations, and buildings.'
+                }, {
+                    type: 'written',
+                    question: 'Fill in the blank: "I will meet you ___ Friday."',
+                    answer: 'on',
+                    explanation: '"On" is used with days of the week.'
+                }, {
+                    type: 'written',
+                    question: 'Fill in the blank: "She has been waiting ___ 20 minutes."',
+                    answer: 'for',
+                    explanation: '"For" is used to indicate the duration of time.'
+                }]
+            },
+            5: { // Phonetics & Phonology
+                name: 'Phonetics & Phonology',
+                questions: [{
+                    type: 'mcq',
+                    question: 'What does IPA stand for?',
+                    options: ['A. International Phonetic Alphabet', 'B. International Phonology Association', 'C. International Phonetic Association',
+                        'D. International Phoneme Alphabet'
+                    ],
+                    answer: 'A',
+                    explanation: 'IPA stands for International Phonetic Alphabet, the standard system for representing speech sounds.'
+                }, {
+                    type: 'mcq',
+                    question: 'How many phonemes does English have approximately?',
+                    options: ['A. 30', 'B. 44', 'C. 50', 'D. 26'],
+                    answer: 'B',
+                    explanation: 'English has approximately 44 phonemes: 24 consonants and 20 vowels.'
+                }, {
+                    type: 'mcq',
+                    question: 'What is a minimal pair?',
+                    options: ['A. Two words that are synonyms', 'B. Two words that differ by only one sound, changing meaning',
+                        'C. Two words that have the same meaning', 'D. Two words that rhyme'
+                    ],
+                    answer: 'B',
+                    explanation: 'A minimal pair is a pair of words that differ by only one phoneme, resulting in a change of meaning (e.g., "ship" vs. "sheep").'
+                }, {
+                    type: 'mcq',
+                    question: 'What is the difference between phonetics and phonology?',
+                    options: ['A. Phonetics studies physical sounds; phonology studies how sounds function in a language',
+                        'B. Phonetics studies meaning; phonology studies sound', 'C. There is no difference',
+                        'D. Phonetics is about writing; phonology is about speaking'
+                    ],
+                    answer: 'A',
+                    explanation: 'Phonetics is the study of the physical properties of speech sounds, while phonology is the study of how sounds function and pattern in a language.'
+                }, {
+                    type: 'mcq',
+                    question: 'What is an allophone?',
+                    options: ['A. A variant of a phoneme that does not change meaning', 'B. A sound that changes meaning',
+                        'C. A letter in the alphabet', 'D. A type of vowel'
+                    ],
+                    answer: 'A',
+                    explanation: 'An allophone is a variant of a phoneme that does not change meaning (e.g., aspirated vs. unaspirated /p/).'
+                }, {
+                    type: 'mcq',
+                    question: 'What is the term for the rise and fall of pitch in speech?',
+                    options: ['A. Stress', 'B. Intonation', 'C. Rhythm', 'D. Tone'],
+                    answer: 'B',
+                    explanation: 'Intonation is the rise and fall of pitch in speech, which conveys attitude, emotion, and sentence type.'
+                }, {
+                    type: 'mcq',
+                    question: 'What is a syllable?',
+                    options: ['A. A single letter', 'B. A unit of sound with a vowel nucleus and optional surrounding consonants',
+                        'C. A word', 'D. A sentence'
+                    ],
+                    answer: 'B',
+                    explanation: 'A syllable is a unit of sound consisting of a vowel nucleus (the peak) and optional surrounding consonants (onset and coda).'
+                }, {
+                    type: 'mcq',
+                    question: 'What is assimilation in connected speech?',
+                    options: ['A. A sound becomes more like a neighbouring sound', 'B. A sound is deleted', 'C. A sound is added',
+                        'D. Two sounds merge'
+                    ],
+                    answer: 'A',
+                    explanation: 'Assimilation is a process where a sound changes to become more like a neighbouring sound (e.g., "ten bikes" → "tem bikes").'
+                }, {
+                    type: 'mcq',
+                    question: 'What is lexical stress?',
+                    options: ['A. The emphasis placed on a syllable within a word', 'B. The stress placed on a word in a sentence',
+                        'C. The pitch of a word', 'D. The length of a vowel'
+                    ],
+                    answer: 'A',
+                    explanation: 'Lexical stress is the emphasis placed on a particular syllable within a word (e.g., "REcord" vs. "reCORD").'
+                }, {
+                    type: 'mcq',
+                    question: 'What is a schwa?',
+                    options: ['A. A consonant sound', 'B. The most common vowel sound, represented by /ə/', 'C. A type of intonation',
+                        'D. A stress pattern'
+                    ],
+                    answer: 'B',
+                    explanation: 'A schwa (/ə/) is the most common vowel sound in English, occurring in unstressed syllables (e.g., the first syllable of "about").'
+                }, {
+                    type: 'written',
+                    question: 'What is the IPA and why is it important?',
+                    answer: 'The IPA (International Phonetic Alphabet) is a system of symbols that represents each speech sound with a unique symbol. It is important because it provides a standardised way to transcribe the sounds of any language, facilitating accurate pronunciation and linguistic analysis.',
+                    explanation: 'The IPA allows linguists, language learners, and speech therapists to describe and compare sounds across languages without ambiguity.'
+                }, {
+                    type: 'written',
+                    question: 'What is the difference between a phoneme and an allophone?',
+                    answer: 'A phoneme is a distinctive sound unit that can change the meaning of a word (e.g., /p/ and /b/ in "pin" vs. "bin"). An allophone is a variant of a phoneme that does not change meaning (e.g., aspirated [pʰ] vs. unaspirated [p] in English).',
+                    explanation: 'Phonemes are abstract categories; allophones are the actual phonetic realisations that occur in specific contexts.'
+                }, {
+                    type: 'written',
+                    question: 'What is assimilation and give an example.',
+                    answer: 'Assimilation is a process in connected speech where a sound changes to become more like a neighbouring sound. Example: "ten bikes" is often pronounced as "tem bikes" because the /n/ assimilates to the bilabial /b/ and becomes /m/.',
+                    explanation: 'Assimilation occurs to make pronunciation easier and smoother in rapid speech.'
+                }, {
+                    type: 'written',
+                    question: 'What is the difference between phonetics and phonology?',
+                    answer: 'Phonetics is the study of the physical properties of speech sounds (how they are produced, transmitted, and perceived), while phonology is the study of how sounds function and pattern in a particular language system.',
+                    explanation: 'Phonetics is about the physical reality of sounds; phonology is about the abstract mental representation and rules governing sounds in a language.'
+                }, {
+                    type: 'written',
+                    question: 'What is intonation and what is its function in English?',
+                    answer: 'Intonation is the rise and fall of pitch in speech. In English, it functions to convey attitude, emotion, and sentence type (e.g., rising intonation for questions, falling intonation for statements).',
+                    explanation: 'Intonation is a suprasegmental feature that adds meaning beyond the individual words.'
+                }]
+            }
+        };
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  STATE
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        const state = {
+            current: {}, // { topic, qIndex, questionObj, answered }
+            scores: [0, 0, 0, 0, 0, 0],
+            attempts: [0, 0, 0, 0, 0, 0],
+            correct: [0, 0, 0, 0, 0, 0],
+            qCount: [0, 0, 0, 0, 0, 0],
+            selectedOption: [null, null, null, null, null, null],
+        };
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  HELPERS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function getQuestions(topicIdx) {
+            return QUESTION_BANK[topicIdx]?.questions || [];
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  GENERATE QUESTION
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function generateQuestion(topicIdx) {
+            const questions = getQuestions(topicIdx);
+            if (!questions.length) return;
+
+            const idx = Math.floor(Math.random() * questions.length);
+            const qObj = { ...questions[idx] };
+
+            state.current[topicIdx] = {
+                qIndex: idx,
+                questionObj: qObj,
+                answered: false
+            };
+            state.selectedOption[topicIdx] = null;
+            state.qCount[topicIdx]++;
+
+            renderQuestion(topicIdx);
+            const fb = document.getElementById('feedback' + topicIdx);
+            fb.classList.remove('show', 'correct', 'wrong', 'info');
+            document.getElementById('qCounter' + topicIdx).textContent = 'Q ' + state.qCount[topicIdx] + ' / ∞';
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  RENDER QUESTION
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function renderQuestion(topicIdx) {
+            const container = document.getElementById('questionContainer' + topicIdx);
+            const data = state.current[topicIdx];
+            if (!data) { container.innerHTML = '<p class="text-muted">Loading question...</p>'; return; }
+
+            const q = data.questionObj;
+            const isMcq = q.type === 'mcq';
+            const isPrecis = q.type === 'precis';
+            const isWritten = q.type === 'written';
+
+            let html = `<div class="question-card">`;
+            if (isMcq) html += `<div class="q-type">📝 MCQ</div>`;
+            else if (isPrecis) html += `<div class="q-type">✍️ Précis</div>`;
+            else if (isWritten) html += `<div class="q-type">✍️ Written</div>`;
+
+            if (q.topic) {
+                html += `<div style="font-size:0.8rem;color:#4a3f7a;font-weight:600;margin-bottom:0.3rem;">📌 ${q.topic}</div>`;
+            }
+            html += `<div class="q-text">${q.question}</div>`;
+
+            if (isPrecis && q.passage) {
+                html += `<div class="passage-box"><div class="passage-label">📄 Passage:</div>${q.passage}</div>`;
+                html += `<textarea class="written-input" id="writtenInput${topicIdx}" placeholder="Write your précis here (approx. one-third of the passage)…" rows="4"></textarea>`;
+            }
+
+            if (isMcq) {
+                html += `<div class="options-grid" id="optionsGrid${topicIdx}">`;
+                const labels = ['A', 'B', 'C', 'D'];
+                q.options.forEach((opt, i) => {
+                    const selected = state.selectedOption[topicIdx] === i ? 'selected' : '';
+                    html += `<div class="option-item ${selected}" data-topic="${topicIdx}" data-optindex="${i}" onclick="selectOption(${topicIdx}, ${i})">
+                        <input type="radio" name="q${topicIdx}" value="${i}" ${state.selectedOption[topicIdx] === i ? 'checked' : ''}>
+                        <span class="opt-label">${labels[i]}.</span>
+                        <span class="opt-text">${opt}</span>
+                    </div>`;
+                });
+                html += `</div>`;
+            }
+
+            if (isWritten && !isPrecis) {
+                html += `<textarea class="written-input" id="writtenInput${topicIdx}" placeholder="Type your answer here…" rows="4"></textarea>`;
+            }
+
+            // model answer container (for precis and written)
+            if (isPrecis || isWritten) {
+                html += `<div class="model-answer" id="modelAnswer${topicIdx}">
+                    <div class="ma-label">📖 Model Answer:</div>
+                    <div style="margin-top:0.3rem;">${q.answer}</div>
+                    <div style="margin-top:0.4rem;font-size:0.85rem;color:#3d3d5a;background:rgba(255,255,255,0.6);padding:0.4rem 0.8rem;border-radius:6px;">
+                        <strong>Explanation:</strong> ${q.explanation}
+                    </div>
+                </div>`;
+            }
+
+            html += `</div>`;
+            container.innerHTML = html;
+
+            if (isMcq && state.selectedOption[topicIdx] !== null) {
+                const selected = state.selectedOption[topicIdx];
+                document.querySelectorAll(`#optionsGrid${topicIdx} .option-item`).forEach((el, i) => {
+                    if (i === selected) {
+                        el.classList.add('selected');
+                        el.querySelector('input[type="radio"]').checked = true;
+                    }
+                });
+            }
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  SELECT OPTION
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function selectOption(topicIdx, optIndex) {
+            state.selectedOption[topicIdx] = optIndex;
+            const grid = document.getElementById('optionsGrid' + topicIdx);
+            if (grid) {
+                grid.querySelectorAll('.option-item').forEach((el, i) => {
+                    el.classList.toggle('selected', i === optIndex);
+                    el.querySelector('input[type="radio"]').checked = (i === optIndex);
+                });
+            }
+            const fb = document.getElementById('feedback' + topicIdx);
+            fb.classList.remove('show', 'correct', 'wrong', 'info');
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  CHECK ANSWER
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function checkAnswer(topicIdx) {
+            const data = state.current[topicIdx];
+            if (!data) return;
+            const q = data.questionObj;
+            const fb = document.getElementById('feedback' + topicIdx);
+            const fbMsg = document.getElementById('fbMsg' + topicIdx);
+            const fbDetail = document.getElementById('fbDetail' + topicIdx);
+
+            // For precis and written, we show the model answer instead
+            if (q.type === 'precis' || q.type === 'written') {
+                const modelDiv = document.getElementById('modelAnswer' + topicIdx);
+                if (modelDiv) modelDiv.classList.add('show');
+                fb.className = 'feedback show info';
+                fbMsg.textContent = '📖 University-Level Model Answer';
+                fbDetail.innerHTML =
+                    `<strong>Model Answer:</strong><br><br>${q.answer}<br><br><strong>Explanation:</strong> ${q.explanation}`;
+                state.attempts[topicIdx]++;
+                document.getElementById('attempts' + topicIdx).textContent = state.attempts[topicIdx];
+                return;
+            }
+
+            // MCQ
+            const selected = state.selectedOption[topicIdx];
+            if (selected === null || selected === undefined) {
+                fbMsg.textContent = '⚠️ Please select an option.';
+                fbDetail.textContent = 'Click on one of the options above.';
+                fb.className = 'feedback show info';
+                return;
+            }
+            const userAnswer = String.fromCharCode(65 + selected);
+            const isCorrect = (userAnswer === q.answer);
+
+            state.attempts[topicIdx]++;
+            if (isCorrect) state.correct[topicIdx]++;
+            state.scores[topicIdx] = Math.round((state.correct[topicIdx] / state.attempts[topicIdx]) * 100);
+
+            document.getElementById('score' + topicIdx).textContent = state.scores[topicIdx];
+            document.getElementById('attempts' + topicIdx).textContent = state.attempts[topicIdx];
+            document.getElementById('correct' + topicIdx).textContent = state.correct[topicIdx];
+
+            fb.className = 'feedback show ' + (isCorrect ? 'correct' : 'wrong');
+            fbMsg.textContent = isCorrect ? '✅ Correct! Well done.' : '❌ Not quite. Review the explanation below.';
+            fbDetail.innerHTML = `<strong>Explanation:</strong> ${q.explanation}`;
+            data.answered = true;
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  SHOW EXPLANATION / MODEL ANSWER
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function showExplanation(topicIdx) {
+            const data = state.current[topicIdx];
+            if (!data) return;
+            const q = data.questionObj;
+            const fb = document.getElementById('feedback' + topicIdx);
+            const fbMsg = document.getElementById('fbMsg' + topicIdx);
+            const fbDetail = document.getElementById('fbDetail' + topicIdx);
+
+            if (q.type === 'precis' || q.type === 'written') {
+                const modelDiv = document.getElementById('modelAnswer' + topicIdx);
+                if (modelDiv) modelDiv.classList.add('show');
+                fb.className = 'feedback show info';
+                fbMsg.textContent = '📖 University-Level Model Answer';
+                fbDetail.innerHTML =
+                    `<strong>Model Answer:</strong><br><br>${q.answer}<br><br><strong>Explanation:</strong> ${q.explanation}`;
+                return;
+            }
+
+            fb.className = 'feedback show info';
+            fbMsg.textContent = '📖 Explanation';
+            fbDetail.innerHTML = `<strong>Correct Answer:</strong> ${q.answer}<br><br><strong>Explanation:</strong> ${q.explanation}`;
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  TAB SWITCHING
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const topicIdx = parseInt(this.dataset.topic);
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.topic-panel').forEach(p => p.classList.remove('active'));
+                document.querySelector(`.topic-panel[data-topic="${topicIdx}"]`).classList.add('active');
+                if (!state.current[topicIdx] || state.current[topicIdx].questionObj === undefined) {
+                    generateQuestion(topicIdx);
+                } else {
+                    renderQuestion(topicIdx);
+                }
+            });
+        });
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        //  INIT
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        for (let i = 0; i < 6; i++) {
+            generateQuestion(i);
+        }
+
+        document.querySelector('.tab-btn[data-topic="0"]').classList.add('active');
+        document.querySelector('.topic-panel[data-topic="0"]').classList.add('active');
+
+        console.log('📘 English Masterclass — all topics fully maintained with rules and examples.');
+    </script>
+
+</body>
+</html>
